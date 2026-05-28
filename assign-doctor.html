@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Assign Doctors - eHealth Hub</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <div class="sidebar">
+
+            <h1>eHealth Hub</h1>
+
+            <ul>
+
+                <li><a href="admin-dashboard.html">Dashboard</a></li>
+
+                <li><a href="manage-patients.html">Patients</a></li>
+
+                <li><a href="manage-doctors.html">Doctors</a></li>
+
+                <li><a href="assign-doctor.html">Assign Doctors</a></li>
+
+                <li><a href="appointment-management.html">Appointments</a></li>
+
+                <li><a href="homepage.html">Logout</a></li>
+
+            </ul>
+
+        </div>
+
+        <div class="content">
+
+            <div class="top">
+
+                <h1>Assign Doctors</h1>
+
+                <p>
+                    Assign doctors to pending patient appointments.
+                </p>
+
+            </div>
+
+            <!-- FORM -->
+
+            <div class="table-section">
+
+                <h2>Assignment Form</h2>
+
+                <form>
+
+                    <label>Patient Name</label>
+
+                    <input type="text" placeholder="Enter patient name">
+
+                    <label>Select Department</label>
+
+                    <select>
+
+                        <option>General Medicine</option>
+
+                        <option>Dental</option>
+
+                        <option>Cardiology</option>
+
+                    </select>
+
+                    <label>Select Doctor</label>
+
+                    <select>
+
+                        <option>Dr. Sarah</option>
+
+                        <option>Dr. James</option>
+
+                        <option>Dr. John</option>
+
+                    </select>
+
+                    <label>Appointment Date</label>
+
+                    <input type="date">
+
+                    <button type="submit">Assign Doctor</button>
+
+                </form>
+
+            </div>
+
+            <!-- TABLE -->
+
+            <div class="table-section">
+
+                <h2>Pending Assignments</h2>
+
+                <table>
+
+                    <tr>
+
+                        <th>Patient</th>
+                        <th>Department</th>
+                        <th>Status</th>
+                        <th>Priority</th>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>John Doe</td>
+                        <td>Cardiology</td>
+                        <td>Waiting</td>
+                        <td>High</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Mary Jane</td>
+                        <td>Dental</td>
+                        <td>Waiting</td>
+                        <td>Medium</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Peter Smith</td>
+                        <td>General Medicine</td>
+                        <td>Waiting</td>
+                        <td>Low</td>
+
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
