@@ -1,178 +1,767 @@
-
 <!DOCTYPE html>
 <html>
 
 <head>
 
-    <title>Manage Doctors - eHealth Hub</title>
+<title>Manage Doctors - eHealth Hub</title>
 
-    <link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/style.css">
 
 </head>
 
+
 <body>
 
-    <div class="dashboard">
 
-        <div class="sidebar">
+<div class="dashboard">
 
-            <h1>eHealth Hub</h1>
 
-            <ul>
 
-                <li><a href="admin-dashboard.html">Dashboard</a></li>
+<div class="sidebar">
 
-                <li><a href="manage-patients.html">Patients</a></li>
 
-                <li><a href="manage-doctors.html">Doctors</a></li>
+<h1>
+eHealth Hub
+</h1>
 
-                <li><a href="assign-doctor.html">Assign Doctors</a></li>
 
-                <li><a href="appointment-management.html">Appointments</a></li>
+<ul>
 
-                <li><a href="index.html">Logout</a></li>
 
-            </ul>
+<li>
+<a href="admin-dashboard.html">
+Dashboard
+</a>
+</li>
 
-        </div>
 
-        <div class="content">
+<li>
+<a href="manage-patients.html">
+Patients
+</a>
+</li>
 
-            <div class="top">
 
-                <h1>Manage Doctors</h1>
+<li>
+<a href="manage-doctors.html">
+Doctors
+</a>
+</li>
 
-                <p>
-                    Manage healthcare staff and hospital departments.
-                </p>
 
-            </div>
+<li>
+<a href="assign-doctor.html">
+Assign Doctors
+</a>
+</li>
 
-            <!-- CARDS -->
 
-            <div class="cards">
+<li>
+<a href="appointment-management.html">
+Appointments
+</a>
+</li>
 
-                <div class="card">
 
-                    <h2>Doctors</h2>
+<li>
+<a href="../index.html" id="logout">
+Logout
+</a>
+</li>
 
-                    <p>58 Active Doctors</p>
 
-                </div>
+</ul>
 
-                <div class="card">
 
-                    <h2>Departments</h2>
+</div>
 
-                    <p>15 Healthcare Departments</p>
 
-                </div>
 
-                <div class="card">
 
-                    <h2>Schedules</h2>
 
-                    <p>Updated Weekly</p>
 
-                </div>
 
-            </div>
 
-            <!-- TABLE -->
 
-            <div class="table-section">
+<div class="content">
 
-                <h2>Doctor Information</h2>
 
-                <table>
 
-                    <tr>
+<div class="top">
 
-                        <th>Name</th>
-                        <th>Department</th>
-                        <th>Email</th>
-                        <th>Status</th>
 
-                    </tr>
+<h1>
+Manage Doctors
+</h1>
 
-                    <tr>
 
-                        <td>Dr. Sarah</td>
-                        <td>Cardiology</td>
-                        <td>sarah@gmail.com</td>
-                        <td>Available</td>
+<p>
+Register and manage healthcare staff.
+</p>
 
-                    </tr>
 
-                    <tr>
+</div>
 
-                        <td>Dr. James</td>
-                        <td>Dental</td>
-                        <td>james@gmail.com</td>
-                        <td>Busy</td>
 
-                    </tr>
 
-                    <tr>
 
-                        <td>Dr. John</td>
-                        <td>General Medicine</td>
-                        <td>john@gmail.com</td>
-                        <td>Available</td>
 
-                    </tr>
 
-                </table>
 
-            </div>
 
-            <!-- IMAGES -->
 
-            <div class="tips">
+<!-- STATISTICS -->
 
-                <div class="tip-box">
 
-                    <img src="../media/firstmanage-doctors.avif">
+<div class="cards">
 
-                    <h3>Healthcare Staff</h3>
 
-                    <p>
-                        Manage hospital staff and doctor schedules efficiently.
-                    </p>
+<div class="card">
 
-                </div>
 
-                <div class="tip-box">
+<h2>
+Doctors
+</h2>
 
-                    <img src="../media/secondmanage-doctors.avif">
 
-                    <h3>Hospital Departments</h3>
+<p>
 
-                    <p>
-                        Coordinate healthcare services across departments.
-                    </p>
+<span id="doctorCount">
+0
+</span>
 
-                </div>
+Registered Doctors
 
-                <div class="tip-box">
+</p>
 
-                    <img src="../media/thirdmanage-doctors.avif">
 
-                    <h3>Digital Management</h3>
+</div>
 
-                    <p>
-                        Improve healthcare administration through technology.
-                    </p>
 
-                </div>
 
-            </div>
 
-        </div>
 
-    </div>
+<div class="card">
+
+
+<h2>
+Departments
+</h2>
+
+
+<p>
+15 Healthcare Departments
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+
+<h2>
+Schedules
+</h2>
+
+
+<p>
+Updated Weekly
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- REGISTER DOCTOR -->
+
+
+<div class="table-section">
+
+
+<h2>
+Register New Doctor
+</h2>
+
+
+
+<form id="doctorForm">
+
+
+
+<label>
+Doctor Full Name
+</label>
+
+
+<input 
+type="text"
+id="doctorName"
+placeholder="Enter doctor name"
+required>
+
+
+
+
+
+<label>
+Email Address
+</label>
+
+
+<input
+type="email"
+id="doctorEmail"
+placeholder="Enter doctor email"
+required>
+
+
+
+
+
+<label>
+Phone Number
+</label>
+
+
+<input
+type="text"
+id="doctorPhone"
+placeholder="Enter phone number"
+required>
+
+
+
+
+
+<label>
+Department
+</label>
+
+
+<select id="department">
+
+
+<option>
+General Medicine
+</option>
+
+
+<option>
+Cardiology
+</option>
+
+
+<option>
+Dental
+</option>
+
+
+<option>
+Pediatrics
+</option>
+
+
+</select>
+
+
+
+
+
+<label>
+Password
+</label>
+
+
+<input
+type="password"
+id="doctorPassword"
+placeholder="Create password"
+required>
+
+
+
+
+<button type="submit">
+Register Doctor
+</button>
+
+
+
+</form>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- DOCTOR TABLE -->
+
+
+<div class="table-section">
+
+
+<h2>
+Doctor Information
+</h2>
+
+
+
+
+<table>
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+Name
+</th>
+
+
+<th>
+Department
+</th>
+
+
+<th>
+Email
+</th>
+
+
+<th>
+Status
+</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+<tbody id="doctorTable">
+
+
+</tbody>
+
+
+
+</table>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="tips">
+
+
+<div class="tip-box">
+
+
+<img src="../media/firstmanage-doctors.avif">
+
+
+<h3>
+Healthcare Staff
+</h3>
+
+
+<p>
+Manage hospital staff and doctor schedules efficiently.
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="tip-box">
+
+
+<img src="../media/secondmanage-doctors.avif">
+
+
+<h3>
+Hospital Departments
+</h3>
+
+
+<p>
+Coordinate healthcare services across departments.
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="tip-box">
+
+
+<img src="../media/thirdmanage-doctors.avif">
+
+
+<h3>
+Digital Management
+</h3>
+
+
+<p>
+Improve healthcare administration through technology.
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<script>
+
+
+
+// CHECK ADMIN
+
+
+let currentUser =
+JSON.parse(localStorage.getItem("currentUser"));
+
+
+
+if(!currentUser || currentUser.role !== "Admin"){
+
+
+alert("Please login as administrator first.");
+
+
+window.location.href="../index.html";
+
+
+}
+
+
+
+
+
+
+
+
+// REGISTER DOCTOR
+
+
+document.getElementById("doctorForm")
+.addEventListener("submit",function(event){
+
+
+event.preventDefault();
+
+
+
+
+let users =
+JSON.parse(localStorage.getItem("users")) || [];
+
+
+
+
+
+
+let email =
+document.getElementById("doctorEmail").value.trim();
+
+
+
+
+
+let exists =
+users.some(function(user){
+
+
+return user.email === email;
+
+
+});
+
+
+
+
+
+if(exists){
+
+
+alert("This email already exists.");
+
+
+return;
+
+
+}
+
+
+
+
+
+
+let doctor = {
+
+
+
+fullName:
+document.getElementById("doctorName").value,
+
+
+email:
+email,
+
+
+phone:
+document.getElementById("doctorPhone").value,
+
+
+department:
+document.getElementById("department").value,
+
+
+password:
+document.getElementById("doctorPassword").value,
+
+
+role:"Doctor"
+
+
+
+};
+
+
+
+
+
+
+
+users.push(doctor);
+
+
+
+
+localStorage.setItem(
+"users",
+JSON.stringify(users)
+);
+
+
+
+
+
+
+alert("Doctor registered successfully.");
+
+
+
+document.getElementById("doctorForm").reset();
+
+
+
+displayDoctors();
+
+
+
+});
+
+
+
+
+
+
+
+
+
+// DISPLAY DOCTORS
+
+
+
+function displayDoctors(){
+
+
+
+let users =
+JSON.parse(localStorage.getItem("users")) || [];
+
+
+
+
+
+
+let doctors =
+users.filter(function(user){
+
+
+return user.role === "Doctor";
+
+
+});
+
+
+
+
+
+
+
+let table =
+document.getElementById("doctorTable");
+
+
+
+table.innerHTML="";
+
+
+
+
+
+
+
+
+doctors.forEach(function(doctor){
+
+
+
+let row =
+document.createElement("tr");
+
+
+
+row.innerHTML = `
+
+
+<td>
+${doctor.fullName}
+</td>
+
+
+<td>
+${doctor.department || "Not Assigned"}
+</td>
+
+
+<td>
+${doctor.email}
+</td>
+
+
+<td>
+Available
+</td>
+
+
+
+`;
+
+
+
+table.appendChild(row);
+
+
+
+});
+
+
+
+
+
+
+document.getElementById("doctorCount").innerHTML =
+doctors.length;
+
+
+
+}
+
+
+
+
+
+
+
+displayDoctors();
+
+
+
+
+
+
+
+
+// LOGOUT
+
+
+document.getElementById("logout")
+.addEventListener("click",function(){
+
+
+localStorage.removeItem("currentUser");
+
+
+});
+
+
+
+</script>
+
 
 </body>
 
 </html>
-

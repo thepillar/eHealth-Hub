@@ -11,112 +11,285 @@
 
 <body>
 
-    <div class="main">
 
-        <!-- LEFT SIDE -->
+<div class="main">
 
-        <div class="left">
 
-            <h1 class="logo">eHealth Hub</h1>
+    <!-- LEFT SIDE -->
 
-            <div class="top">
+    <div class="left">
 
-                <h1>Patient Portal</h1>
+
+        <h1 class="logo">eHealth Hub</h1>
+
+
+        <div class="top">
+
+            <h1>Patient Portal</h1>
+
+            <p>
+                Welcome to your healthcare dashboard.
+                Manage appointments, medical records,
+                and healthcare services easily.
+            </p>
+
+        </div>
+
+
+
+        <div class="cards">
+
+
+            <div class="card">
+
+                <h2>Dashboard</h2>
 
                 <p>
-                    Welcome to the patient portal.  
-                    Access your medical dashboard, appointments, and health records in one place.
+                    View your medical activities and upcoming appointments.
                 </p>
 
-            </div>
-
-            <div class="cards">
-
-                <div class="card">
-
-                    <h2>Dashboard</h2>
-
-                    <p>View your medical activities and upcoming appointments.</p>
-
-                    <a href="patient-dashboard.html" style="color:#7fffd4; text-decoration:none;">Go to Dashboard →</a>
-
-                </div>
-
-                <div class="card">
-
-                    <h2>Medical Records</h2>
-
-                    <p>Access your personal health history securely.</p>
-
-                    <a href="medical-records.html" style="color:#7fffd4; text-decoration:none;">View Records →</a>
-
-                </div>
-
-                <div class="card">
-
-                    <h2>Appointments</h2>
-
-                    <p>Book and track your hospital visits easily.</p>
-
-                    <a href="appointment-status.html" style="color:#7fffd4; text-decoration:none;">Check Status →</a>
-
-                </div>
+                <a href="patient-dashboard.html"
+                style="color:#7fffd4;">
+                    Go to Dashboard →
+                </a>
 
             </div>
 
-        </div>
 
-        <!-- RIGHT SIDE -->
 
-        <div class="right">
-
-            <div class="top">
-
-                <h1>Login to Portal</h1>
-
-                <p>Select Patient role to continue</p>
-
-            </div>
-
-            <!-- LOGIN CARD -->
 
             <div class="card">
 
-                <h2>Patient Login</h2>
+                <h2>Medical Records</h2>
 
-                <form>
+                <p>
+                    Access your personal health history securely.
+                </p>
 
-                    <label>Email</label>
-                    <input type="email" placeholder="Enter email">
-
-                    <label>Password</label>
-                    <input type="password" placeholder="Enter password">
-
-                    <button type="button" onclick="window.location.href='patient-dashboard.html'">
-                        Login
-                    </button>
-
-                </form>
+                <a href="medical-records.html"
+                style="color:#7fffd4;">
+                    View Records →
+                </a>
 
             </div>
 
-            <!-- QUICK INFO -->
+
+
+
 
             <div class="card">
 
-                <h2>Quick Access</h2>
+                <h2>Appointments</h2>
 
-                <p>Everything you need is connected:</p>
+                <p>
+                    Book and track your hospital visits easily.
+                </p>
 
-                <p>✔ Dashboard</p>
-                <p>✔ Medical Records</p>
-                <p>✔ Appointment System</p>
+                <a href="appointment-status.html"
+                style="color:#7fffd4;">
+                    Check Status →
+                </a>
 
             </div>
 
+
+
         </div>
+
+
 
     </div>
+
+
+
+
+
+    <!-- RIGHT SIDE -->
+
+
+    <div class="right">
+
+
+
+        <div class="top">
+
+            <h1 id="welcomeMessage">
+                Welcome Patient
+            </h1>
+
+            <p>
+                Your healthcare information dashboard.
+            </p>
+
+        </div>
+
+
+
+
+
+        <!-- PATIENT PROFILE -->
+
+
+        <div class="card">
+
+
+            <h2>Patient Information</h2>
+
+
+            <p>
+                Name:
+                <strong id="patientName">
+                    Loading...
+                </strong>
+            </p>
+
+
+            <p>
+                Email:
+                <strong id="patientEmail">
+                    Loading...
+                </strong>
+            </p>
+
+
+            <p>
+                Phone:
+                <strong id="patientPhone">
+                    Loading...
+                </strong>
+            </p>
+
+
+            <p>
+                Gender:
+                <strong id="patientGender">
+                    Loading...
+                </strong>
+            </p>
+
+
+
+        </div>
+
+
+
+
+
+        <!-- QUICK ACCESS -->
+
+
+        <div class="card">
+
+
+            <h2>Quick Access</h2>
+
+
+            <p>Everything you need is connected:</p>
+
+            <p>✔ Dashboard</p>
+
+            <p>✔ Medical Records</p>
+
+            <p>✔ Appointment System</p>
+
+
+            <button id="logoutBtn">
+                Logout
+            </button>
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+</div>
+
+
+
+
+
+<script>
+
+
+// GET CURRENT USER
+
+let currentUser =
+JSON.parse(localStorage.getItem("currentUser"));
+
+
+
+// CHECK LOGIN STATUS
+
+if(!currentUser || currentUser.role !== "Patient"){
+
+
+    alert("Please login as a patient first.");
+
+    window.location.href="../index.html";
+
+
+}
+
+else{
+
+
+    document.getElementById("welcomeMessage").innerHTML =
+    "Welcome " + currentUser.fullName;
+
+
+
+    document.getElementById("patientName").innerHTML =
+    currentUser.fullName;
+
+
+
+    document.getElementById("patientEmail").innerHTML =
+    currentUser.email;
+
+
+
+    document.getElementById("patientPhone").innerHTML =
+    currentUser.phone;
+
+
+
+    document.getElementById("patientGender").innerHTML =
+    currentUser.gender;
+
+
+
+}
+
+
+
+
+
+// LOGOUT
+
+
+document.getElementById("logoutBtn")
+.addEventListener("click",function(){
+
+
+    localStorage.removeItem("currentUser");
+
+
+    alert("You have logged out successfully.");
+
+
+    window.location.href="../index.html";
+
+
+});
+
+
+
+</script>
+
 
 </body>
 

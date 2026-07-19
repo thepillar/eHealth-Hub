@@ -1,168 +1,632 @@
-
 <!DOCTYPE html>
 <html>
 
 <head>
 
-    <title>Appointment Management - eHealth Hub</title>
+<title>Appointment Management - eHealth Hub</title>
 
-    <link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/style.css">
 
 </head>
 
+
 <body>
 
-    <div class="dashboard">
 
-        <div class="sidebar">
+<div class="dashboard">
 
-            <h1>eHealth Hub</h1>
 
-            <ul>
 
-                <li><a href="admin-dashboard.html">Dashboard</a></li>
+<!-- SIDEBAR -->
 
-                <li><a href="manage-patients.html">Patients</a></li>
+<div class="sidebar">
 
-                <li><a href="manage-doctors.html">Doctors</a></li>
 
-                <li><a href="assign-doctor.html">Assign Doctors</a></li>
+<h1>
+eHealth Hub
+</h1>
 
-                <li><a href="appointment-management.html">Appointments</a></li>
 
-                <li><a href="index.html">Logout</a></li>
+<ul>
 
-            </ul>
 
-        </div>
+<li>
+<a href="admin-dashboard.html">
+Dashboard
+</a>
+</li>
 
-        <div class="content">
 
-            <div class="top">
+<li>
+<a href="manage-patients.html">
+Patients
+</a>
+</li>
 
-                <h1>Appointment Management</h1>
 
-                <p>
-                    Manage all hospital appointments and schedules.
-                </p>
+<li>
+<a href="manage-doctors.html">
+Doctors
+</a>
+</li>
 
-            </div>
 
-            <div class="cards">
+<li>
+<a href="assign-doctor.html">
+Assign Doctors
+</a>
+</li>
 
-                <div class="card">
 
-                    <h2>Total Appointments</h2>
+<li>
+<a href="appointment-management.html">
+Appointments
+</a>
+</li>
 
-                    <p>320 Monthly Appointments</p>
 
-                </div>
+<li>
+<a href="../index.html" id="logout">
+Logout
+</a>
+</li>
 
-                <div class="card">
 
-                    <h2>Pending Requests</h2>
+</ul>
 
-                    <p>48 Appointments Waiting</p>
 
-                </div>
+</div>
 
-                <div class="card">
 
-                    <h2>Completed Visits</h2>
 
-                    <p>272 Completed Appointments</p>
 
-                </div>
 
-            </div>
 
-            <div class="table-section">
 
-                <h2>Appointment Records</h2>
 
-                <table>
+<!-- CONTENT -->
 
-                    <tr>
 
-                        <th>Patient</th>
-                        <th>Date</th>
-                        <th>Status</th>
+<div class="content">
 
-                    </tr>
 
-                    <tr>
 
-                        <td>John Doe</td>
-                        <td>28 May 2026</td>
-                        <td>Confirmed</td>
+<div class="top">
 
-                    </tr>
 
-                    <tr>
+<h1>
+Appointment Management
+</h1>
 
-                        <td>Mary Jane</td>
-                        <td>30 May 2026</td>
-                        <td>Pending</td>
 
-                    </tr>
+<p>
+Manage all hospital appointments and schedules.
+</p>
 
-                    <tr>
 
-                        <td>Peter Smith</td>
-                        <td>1 June 2026</td>
-                        <td>Completed</td>
+</div>
 
-                    </tr>
 
-                </table>
 
-            </div>
 
-            <div class="tips">
 
-                <div class="tip-box">
 
-                    <img src="../media/firstappointment-management.avif">
 
-                    <h3>Hospital Scheduling</h3>
 
-                    <p>
-                        Organize healthcare appointments efficiently.
-                    </p>
 
-                </div>
+<!-- CARDS -->
 
-                <div class="tip-box">
 
-                    <img src="../media/seconappointment-management.avif">
+<div class="cards">
 
-                    <h3>Patient Services</h3>
 
-                    <p>
-                        Improve patient healthcare experiences digitally.
-                    </p>
+<div class="card">
 
-                </div>
 
-                <div class="tip-box">
+<h2>
+Total Appointments
+</h2>
 
-                    <img src="../media/thirdapointment-management.avif">
 
-                    <h3>Digital Healthcare</h3>
+<p>
+<span id="totalAppointments">
+0
+</span>
+Appointments
+</p>
 
-                    <p>
-                        Modern healthcare systems improve hospital management.
-                    </p>
 
-                </div>
+</div>
 
-            </div>
 
-        </div>
 
-    </div>
+
+
+<div class="card">
+
+
+<h2>
+Pending Requests
+</h2>
+
+
+<p>
+<span id="pendingAppointments">
+0
+</span>
+Waiting
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+
+<h2>
+Completed Visits
+</h2>
+
+
+<p>
+<span id="completedAppointments">
+0
+</span>
+Completed
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- TABLE -->
+
+
+<div class="table-section">
+
+
+<h2>
+Appointment Records
+</h2>
+
+
+
+<table>
+
+
+<thead>
+
+
+<tr>
+
+<th>
+Patient
+</th>
+
+
+<th>
+Department
+</th>
+
+
+<th>
+Date
+</th>
+
+
+<th>
+Problem
+</th>
+
+
+<th>
+Status
+</th>
+
+
+<th>
+Action
+</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+<tbody id="appointmentTable">
+
+
+</tbody>
+
+
+
+</table>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- INFORMATION -->
+
+
+<div class="tips">
+
+
+<div class="tip-box">
+
+
+<img src="../media/firstappointment-management.avif">
+
+
+<h3>
+Hospital Scheduling
+</h3>
+
+
+<p>
+Organize healthcare appointments efficiently.
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="tip-box">
+
+
+<img src="../media/seconappointment-management.avif">
+
+
+<h3>
+Patient Services
+</h3>
+
+
+<p>
+Improve patient healthcare experiences digitally.
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="tip-box">
+
+
+<img src="../media/thirdapointment-management.avif">
+
+
+<h3>
+Digital Healthcare
+</h3>
+
+
+<p>
+Modern healthcare systems improve hospital management.
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<script>
+
+
+
+// CURRENT USER
+
+
+let currentUser =
+JSON.parse(localStorage.getItem("currentUser"));
+
+
+
+
+
+
+// CHECK ADMIN
+
+
+if(!currentUser || currentUser.role !== "Admin"){
+
+
+alert("Please login as administrator first.");
+
+
+window.location.href="../index.html";
+
+
+}
+
+
+
+
+
+
+
+
+
+
+// LOAD APPOINTMENTS
+
+
+function loadAppointments(){
+
+
+
+let appointments =
+JSON.parse(localStorage.getItem("appointments")) || [];
+
+
+
+
+let table =
+document.getElementById("appointmentTable");
+
+
+
+table.innerHTML="";
+
+
+
+
+
+let pending=0;
+
+let completed=0;
+
+
+
+
+
+
+
+appointments.forEach(function(appointment,index){
+
+
+
+if(appointment.status==="Pending"){
+
+pending++;
+
+}
+
+
+if(appointment.status==="Completed"){
+
+completed++;
+
+}
+
+
+
+
+
+
+let row =
+document.createElement("tr");
+
+
+
+
+
+row.innerHTML = `
+
+
+<td>
+${appointment.patientName}
+</td>
+
+
+<td>
+${appointment.department}
+</td>
+
+
+<td>
+${appointment.date}
+</td>
+
+
+<td>
+${appointment.problem}
+</td>
+
+
+<td>
+${appointment.status}
+</td>
+
+
+<td>
+
+
+<button onclick="updateStatus(${index},'Confirmed')">
+Approve
+</button>
+
+
+<button onclick="updateStatus(${index},'Completed')">
+Complete
+</button>
+
+
+<button onclick="updateStatus(${index},'Rejected')">
+Reject
+</button>
+
+
+</td>
+
+
+`;
+
+
+
+
+table.appendChild(row);
+
+
+
+});
+
+
+
+
+
+
+
+document.getElementById("totalAppointments").innerHTML =
+appointments.length;
+
+
+
+document.getElementById("pendingAppointments").innerHTML =
+pending;
+
+
+
+document.getElementById("completedAppointments").innerHTML =
+completed;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// UPDATE STATUS
+
+
+function updateStatus(index,status){
+
+
+
+let appointments =
+JSON.parse(localStorage.getItem("appointments")) || [];
+
+
+
+
+appointments[index].status=status;
+
+
+
+
+localStorage.setItem(
+"appointments",
+JSON.stringify(appointments)
+);
+
+
+
+
+
+alert(
+"Appointment updated to " + status
+);
+
+
+
+
+loadAppointments();
+
+
+
+}
+
+
+
+
+
+
+
+
+loadAppointments();
+
+
+
+
+
+
+
+
+
+// LOGOUT
+
+
+document.getElementById("logout")
+.addEventListener("click",function(){
+
+
+localStorage.removeItem("currentUser");
+
+
+});
+
+
+
+</script>
+
+
 
 </body>
 
 </html>
-

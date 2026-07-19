@@ -9,73 +9,610 @@
 
 </head>
 
+
 <body>
 
-    <div class="dashboard">
 
-        <div class="sidebar">
+<div class="dashboard">
 
-            <h1>eHealth Hub</h1>
 
-            <ul>
+<!-- SIDEBAR -->
 
-                <li><a href="doctor-dashboard.html">Dashboard</a></li>
 
-                <li><a href="doctor-appointments.html">My Appointments</a></li>
+<div class="sidebar">
 
-                <li><a href="patient-reports.html">Patient Reports</a></li>
 
-                <li><a href="availability.html">Availability</a></li>
+<h1>
+eHealth Hub
+</h1>
 
-                <li><a href="index.html">Logout</a></li>
 
-            </ul>
+<ul>
 
-        </div>
 
-        <div class="content">
+<li>
+<a href="doctor-dashboard.html">
+Dashboard
+</a>
+</li>
 
-            <div class="top">
 
-                <h1>Doctor Availability</h1>
+<li>
+<a href="doctor-appointments.html">
+My Appointments
+</a>
+</li>
 
-                <p>Update doctor schedules and available working hours.</p>
 
-            </div>
+<li>
+<a href="patient-reports.html">
+Patient Reports
+</a>
+</li>
 
-            <div class="table-section">
 
-                <h2>Availability Schedule</h2>
+<li>
+<a href="availability.html">
+Availability
+</a>
+</li>
 
-                <form>
 
-                    <label>Select Day</label>
-                    <select>
-                        <option>Monday</option>
-                        <option>Tuesday</option>
-                        <option>Wednesday</option>
-                        <option>Thursday</option>
-                        <option>Friday</option>
-                    </select>
+<li>
+<a href="../index.html" id="logout">
+Logout
+</a>
+</li>
 
-                    <label>Available Time</label>
-                    <input type="text" placeholder="8:00 AM - 5:00 PM">
 
-                    <label>Status</label>
-                    <select>
-                        <option>Available</option>
-                        <option>Busy</option>
-                    </select>
+</ul>
 
-                    <button type="submit">Update Availability</button>
 
-                </form>
+</div>
 
-            </div>
 
-        </div>
 
-    </div>
+
+
+
+
+
+
+<!-- CONTENT -->
+
+
+<div class="content">
+
+
+
+<div class="top">
+
+
+<h1>
+Doctor Availability
+</h1>
+
+
+<p>
+Update doctor schedules and available working hours.
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- DOCTOR INFORMATION -->
+
+
+<div class="profile-box">
+
+
+<h2>
+Doctor Information
+</h2>
+
+
+<p>
+<strong>
+Doctor Name:
+</strong>
+
+<span id="doctorName">
+Loading...
+</span>
+
+</p>
+
+
+<p>
+<strong>
+Email:
+</strong>
+
+<span id="doctorEmail">
+Loading...
+</span>
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- FORM -->
+
+
+<div class="table-section">
+
+
+<h2>
+Availability Schedule
+</h2>
+
+
+
+
+<form id="availabilityForm">
+
+
+
+<label>
+Select Day
+</label>
+
+
+<select id="day">
+
+
+<option>
+Monday
+</option>
+
+
+<option>
+Tuesday
+</option>
+
+
+<option>
+Wednesday
+</option>
+
+
+<option>
+Thursday
+</option>
+
+
+<option>
+Friday
+</option>
+
+
+</select>
+
+
+
+
+
+
+<label>
+Available Time
+</label>
+
+
+<input 
+type="text"
+id="time"
+placeholder="8:00 AM - 5:00 PM"
+required>
+
+
+
+
+
+
+<label>
+Status
+</label>
+
+
+<select id="status">
+
+
+<option>
+Available
+</option>
+
+
+<option>
+Busy
+</option>
+
+
+</select>
+
+
+
+
+
+
+<button type="submit">
+Update Availability
+</button>
+
+
+
+
+</form>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- SAVED SCHEDULE -->
+
+
+<div class="table-section">
+
+
+<h2>
+My Availability Schedule
+</h2>
+
+
+
+
+<table>
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+Day
+</th>
+
+
+<th>
+Time
+</th>
+
+
+<th>
+Status
+</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+<tbody id="scheduleTable">
+
+
+</tbody>
+
+
+
+</table>
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<script>
+
+
+
+// CURRENT USER
+
+
+let currentUser =
+JSON.parse(localStorage.getItem("currentUser"));
+
+
+
+
+
+
+
+// CHECK DOCTOR LOGIN
+
+
+if(!currentUser || currentUser.role !== "Doctor"){
+
+
+alert("Please login as a doctor first.");
+
+
+window.location.href="../index.html";
+
+
+}
+
+else{
+
+
+document.getElementById("doctorName").innerHTML =
+currentUser.fullName;
+
+
+
+document.getElementById("doctorEmail").innerHTML =
+currentUser.email;
+
+
+}
+
+
+
+
+
+
+
+
+
+// SAVE AVAILABILITY
+
+
+
+document.getElementById("availabilityForm")
+.addEventListener("submit",function(event){
+
+
+event.preventDefault();
+
+
+
+
+let availability =
+JSON.parse(localStorage.getItem("availability")) || [];
+
+
+
+
+
+
+
+let schedule = {
+
+
+
+doctor: currentUser.fullName,
+
+
+email: currentUser.email,
+
+
+day:
+document.getElementById("day").value,
+
+
+
+time:
+document.getElementById("time").value,
+
+
+
+status:
+document.getElementById("status").value
+
+
+
+};
+
+
+
+
+
+
+availability.push(schedule);
+
+
+
+
+
+
+localStorage.setItem(
+"availability",
+JSON.stringify(availability)
+);
+
+
+
+
+
+
+
+alert("Availability updated successfully.");
+
+
+
+document.getElementById("availabilityForm").reset();
+
+
+
+displaySchedule();
+
+
+
+});
+
+
+
+
+
+
+
+
+
+// DISPLAY SCHEDULE
+
+
+function displaySchedule(){
+
+
+
+let availability =
+JSON.parse(localStorage.getItem("availability")) || [];
+
+
+
+
+
+
+let mySchedule =
+availability.filter(function(item){
+
+
+
+return item.email === currentUser.email;
+
+
+
+});
+
+
+
+
+
+
+let table =
+document.getElementById("scheduleTable");
+
+
+
+table.innerHTML="";
+
+
+
+
+
+
+
+mySchedule.forEach(function(item){
+
+
+
+let row =
+document.createElement("tr");
+
+
+
+
+row.innerHTML = `
+
+
+<td>
+${item.day}
+</td>
+
+
+<td>
+${item.time}
+</td>
+
+
+<td>
+${item.status}
+</td>
+
+
+`;
+
+
+
+table.appendChild(row);
+
+
+
+});
+
+
+
+}
+
+
+
+
+
+
+
+displaySchedule();
+
+
+
+
+
+
+
+
+
+// LOGOUT
+
+
+document.getElementById("logout")
+.addEventListener("click",function(){
+
+
+localStorage.removeItem("currentUser");
+
+
+});
+
+
+
+</script>
+
+
 
 </body>
 

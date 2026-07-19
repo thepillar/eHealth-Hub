@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -10,135 +9,543 @@
 
 </head>
 
+
 <body>
 
-    <div class="dashboard">
 
-        <!-- SIDEBAR -->
+<div class="dashboard">
 
-        <div class="sidebar">
 
-            <h1>eHealth Hub</h1>
+    <!-- SIDEBAR -->
 
-            <ul>
+    <div class="sidebar">
 
-                <li><a href="patient-dashboard.html">Dashboard</a></li>
 
-                <li><a href="book-appointment.html">Book Appointment</a></li>
+        <h1>eHealth Hub</h1>
 
-                <li><a href="medical-records.html">Medical Records</a></li>
 
-                <li><a href="appointment-status.html">Appointment Status</a></li>
+        <ul>
 
-                <li><a href="patient-profile.html">My Profile</a></li>
 
-                <li><a href="index.html">Logout</a></li>
+            <li>
+                <a href="patient-dashboard.html">
+                    Dashboard
+                </a>
+            </li>
 
-            </ul>
 
-        </div>
+            <li>
+                <a href="book-appointment.html">
+                    Book Appointment
+                </a>
+            </li>
 
-        <!-- CONTENT -->
 
-        <div class="content">
+            <li>
+                <a href="medical-records.html">
+                    Medical Records
+                </a>
+            </li>
 
-            <div class="top">
 
-                <h1>Patient Profile</h1>
+            <li>
+                <a href="appointment-status.html">
+                    Appointment Status
+                </a>
+            </li>
 
-                <p>
-                    View and manage your healthcare profile information.
-                </p>
 
-            </div>
+            <li>
+                <a href="patient-profile.html">
+                    My Profile
+                </a>
+            </li>
 
-            <!-- PROFILE -->
 
-            <div class="profile-box">
+            <li>
+                <a href="../index.html" id="logout">
+                    Logout
+                </a>
+            </li>
 
-                <h2>Personal Information</h2>
 
-                <p><strong>Full Name:</strong> John Doe</p>
+        </ul>
 
-                <p><strong>Email:</strong> johndoe@gmail.com</p>
-
-                <p><strong>Phone Number:</strong> +250 788 000 000</p>
-
-                <p><strong>Date Of Birth:</strong> 14 March 2001</p>
-
-                <p><strong>Gender:</strong> Male</p>
-
-                <p><strong>Blood Group:</strong> A+</p>
-
-                <p><strong>Insurance:</strong> Active</p>
-
-            </div>
-
-            <!-- UPDATE FORM -->
-
-            <div class="table-section">
-
-                <h2>Update Profile</h2>
-
-                <form>
-
-                    <label>Full Name</label>
-
-                    <input type="text" placeholder="Update full name">
-
-                    <label>Email Address</label>
-
-                    <input type="email" placeholder="Update email">
-
-                    <label>Phone Number</label>
-
-                    <input type="text" placeholder="Update phone number">
-
-                    <label>Address</label>
-
-                    <textarea rows="4" placeholder="Enter address"></textarea>
-
-                    <button type="submit">Save Changes</button>
-
-                </form>
-
-            </div>
-
-            <!-- HEALTH DETAILS -->
-
-            <div class="cards">
-
-                <div class="card">
-
-                    <h2>Appointments</h2>
-
-                    <p>24 Total Hospital Visits</p>
-
-                </div>
-
-                <div class="card">
-
-                    <h2>Medical Reports</h2>
-
-                    <p>15 Available Healthcare Reports</p>
-
-                </div>
-
-                <div class="card">
-
-                    <h2>Insurance</h2>
-
-                    <p>Healthcare Insurance Active</p>
-
-                </div>
-
-            </div>
-
-        </div>
 
     </div>
 
+
+
+
+
+    <!-- CONTENT -->
+
+
+    <div class="content">
+
+
+        <div class="top">
+
+
+            <h1>
+                Patient Profile
+            </h1>
+
+
+            <p>
+                View and manage your healthcare profile information.
+            </p>
+
+
+        </div>
+
+
+
+
+
+
+
+        <!-- PROFILE INFORMATION -->
+
+
+        <div class="profile-box">
+
+
+            <h2>
+                Personal Information
+            </h2>
+
+
+
+            <p>
+                <strong>Full Name:</strong>
+                <span id="profileName"></span>
+            </p>
+
+
+
+            <p>
+                <strong>Email:</strong>
+                <span id="profileEmail"></span>
+            </p>
+
+
+
+            <p>
+                <strong>Phone Number:</strong>
+                <span id="profilePhone"></span>
+            </p>
+
+
+
+            <p>
+                <strong>Date Of Birth:</strong>
+                <span id="profileDob"></span>
+            </p>
+
+
+
+            <p>
+                <strong>Gender:</strong>
+                <span id="profileGender"></span>
+            </p>
+
+
+
+            <p>
+                <strong>Blood Group:</strong>
+                A+
+            </p>
+
+
+
+            <p>
+                <strong>Insurance:</strong>
+                Active
+            </p>
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+        <!-- UPDATE PROFILE -->
+
+
+        <div class="table-section">
+
+
+            <h2>
+                Update Profile
+            </h2>
+
+
+
+            <form id="updateForm">
+
+
+                <label>
+                    Full Name
+                </label>
+
+
+                <input 
+                type="text"
+                id="updateName"
+                required>
+
+
+
+
+
+                <label>
+                    Email Address
+                </label>
+
+
+                <input 
+                type="email"
+                id="updateEmail"
+                required>
+
+
+
+
+
+                <label>
+                    Phone Number
+                </label>
+
+
+                <input 
+                type="text"
+                id="updatePhone"
+                required>
+
+
+
+
+
+                <label>
+                    Address
+                </label>
+
+
+                <textarea 
+                id="updateAddress"
+                rows="4"
+                placeholder="Enter address"></textarea>
+
+
+
+
+
+                <button type="submit">
+                    Save Changes
+                </button>
+
+
+
+            </form>
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+        <!-- HEALTH SUMMARY -->
+
+
+        <div class="cards">
+
+
+            <div class="card">
+
+
+                <h2>
+                    Appointments
+                </h2>
+
+
+                <p>
+                    View your hospital visits and appointments.
+                </p>
+
+
+            </div>
+
+
+
+
+
+            <div class="card">
+
+
+                <h2>
+                    Medical Reports
+                </h2>
+
+
+                <p>
+                    Access your healthcare reports.
+                </p>
+
+
+            </div>
+
+
+
+
+
+            <div class="card">
+
+
+                <h2>
+                    Insurance
+                </h2>
+
+
+                <p>
+                    Healthcare insurance status: Active.
+                </p>
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<script>
+
+
+// GET LOGGED USER
+
+
+let currentUser =
+JSON.parse(localStorage.getItem("currentUser"));
+
+
+
+
+
+// CHECK USER
+
+
+if(!currentUser || currentUser.role !== "Patient"){
+
+
+    alert("Please login as a patient first.");
+
+    window.location.href="../index.html";
+
+
+}
+
+else{
+
+
+    document.getElementById("profileName").innerHTML =
+    currentUser.fullName;
+
+
+
+    document.getElementById("profileEmail").innerHTML =
+    currentUser.email;
+
+
+
+    document.getElementById("profilePhone").innerHTML =
+    currentUser.phone;
+
+
+
+    document.getElementById("profileDob").innerHTML =
+    currentUser.dob;
+
+
+
+    document.getElementById("profileGender").innerHTML =
+    currentUser.gender;
+
+
+
+    // Fill update form
+
+
+    document.getElementById("updateName").value =
+    currentUser.fullName;
+
+
+
+    document.getElementById("updateEmail").value =
+    currentUser.email;
+
+
+
+    document.getElementById("updatePhone").value =
+    currentUser.phone;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// UPDATE PROFILE
+
+
+document.getElementById("updateForm")
+.addEventListener("submit",function(event){
+
+
+event.preventDefault();
+
+
+
+let users =
+JSON.parse(localStorage.getItem("users")) || [];
+
+
+
+let oldEmail = currentUser.email;
+
+
+
+let newName =
+document.getElementById("updateName").value;
+
+
+
+let newEmail =
+document.getElementById("updateEmail").value;
+
+
+
+let newPhone =
+document.getElementById("updatePhone").value;
+
+
+
+
+
+users = users.map(function(user){
+
+
+    if(user.email === oldEmail){
+
+
+        user.fullName = newName;
+
+        user.email = newEmail;
+
+        user.phone = newPhone;
+
+
+        currentUser = user;
+
+
+    }
+
+
+    return user;
+
+
+});
+
+
+
+
+
+localStorage.setItem(
+"users",
+JSON.stringify(users)
+);
+
+
+
+
+
+localStorage.setItem(
+"currentUser",
+JSON.stringify(currentUser)
+);
+
+
+
+
+
+alert("Profile updated successfully.");
+
+
+
+location.reload();
+
+
+
+});
+
+
+
+
+
+
+
+
+
+// LOGOUT
+
+
+document.getElementById("logout")
+.addEventListener("click",function(){
+
+
+localStorage.removeItem("currentUser");
+
+
+});
+
+
+
+</script>
+
+
+
+
 </body>
 
-</html>
 
+</html>

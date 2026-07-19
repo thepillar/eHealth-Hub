@@ -1,151 +1,686 @@
-
 <!DOCTYPE html>
 <html>
 
 <head>
 
-    <title>Assign Doctors - eHealth Hub</title>
+<title>Assign Doctors - eHealth Hub</title>
 
-    <link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/style.css">
 
 </head>
 
+
 <body>
 
-    <div class="dashboard">
 
-        <div class="sidebar">
+<div class="dashboard">
 
-            <h1>eHealth Hub</h1>
 
-            <ul>
+<div class="sidebar">
 
-                <li><a href="admin-dashboard.html">Dashboard</a></li>
 
-                <li><a href="manage-patients.html">Patients</a></li>
+<h1>
+eHealth Hub
+</h1>
 
-                <li><a href="manage-doctors.html">Doctors</a></li>
 
-                <li><a href="assign-doctor.html">Assign Doctors</a></li>
+<ul>
 
-                <li><a href="appointment-management.html">Appointments</a></li>
+<li>
+<a href="admin-dashboard.html">
+Dashboard
+</a>
+</li>
 
-                <li><a href="index.html">Logout</a></li>
+<li>
+<a href="manage-patients.html">
+Patients
+</a>
+</li>
 
-            </ul>
+<li>
+<a href="manage-doctors.html">
+Doctors
+</a>
+</li>
 
-        </div>
+<li>
+<a href="assign-doctor.html">
+Assign Doctors
+</a>
+</li>
 
-        <div class="content">
+<li>
+<a href="appointment-management.html">
+Appointments
+</a>
+</li>
 
-            <div class="top">
+<li>
+<a href="../index.html" id="logout">
+Logout
+</a>
+</li>
 
-                <h1>Assign Doctors</h1>
 
-                <p>
-                    Assign doctors to pending patient appointments.
-                </p>
+</ul>
 
-            </div>
 
-            <!-- FORM -->
+</div>
 
-            <div class="table-section">
 
-                <h2>Assignment Form</h2>
 
-                <form>
 
-                    <label>Patient Name</label>
 
-                    <input type="text" placeholder="Enter patient name">
 
-                    <label>Select Department</label>
 
-                    <select>
 
-                        <option>General Medicine</option>
+<div class="content">
 
-                        <option>Dental</option>
 
-                        <option>Cardiology</option>
 
-                    </select>
+<div class="top">
 
-                    <label>Select Doctor</label>
+<h1>
+Assign Doctors
+</h1>
 
-                    <select>
 
-                        <option>Dr. Sarah</option>
+<p>
+Assign doctors to pending patient appointments.
+</p>
 
-                        <option>Dr. James</option>
 
-                        <option>Dr. John</option>
+</div>
 
-                    </select>
 
-                    <label>Appointment Date</label>
 
-                    <input type="date">
 
-                    <button type="submit">Assign Doctor</button>
 
-                </form>
 
-            </div>
 
-            <!-- TABLE -->
 
-            <div class="table-section">
 
-                <h2>Pending Assignments</h2>
+<!-- ASSIGNMENT FORM -->
 
-                <table>
 
-                    <tr>
+<div class="table-section">
 
-                        <th>Patient</th>
-                        <th>Department</th>
-                        <th>Status</th>
-                        <th>Priority</th>
 
-                    </tr>
+<h2>
+Assignment Form
+</h2>
 
-                    <tr>
 
-                        <td>John Doe</td>
-                        <td>Cardiology</td>
-                        <td>Waiting</td>
-                        <td>High</td>
+<form id="assignForm">
 
-                    </tr>
 
-                    <tr>
 
-                        <td>Mary Jane</td>
-                        <td>Dental</td>
-                        <td>Waiting</td>
-                        <td>Medium</td>
+<label>
+Select Appointment
+</label>
 
-                    </tr>
 
-                    <tr>
+<select id="appointmentSelect" required>
 
-                        <td>Peter Smith</td>
-                        <td>General Medicine</td>
-                        <td>Waiting</td>
-                        <td>Low</td>
+<option>
+Select appointment
+</option>
 
-                    </tr>
+</select>
 
-                </table>
 
-            </div>
 
-        </div>
 
-    </div>
+
+
+<label>
+Select Doctor
+</label>
+
+
+<select id="doctorSelect" required>
+
+<option>
+Select doctor
+</option>
+
+</select>
+
+
+
+
+
+
+<button type="submit">
+Assign Doctor
+</button>
+
+
+
+</form>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- TABLE -->
+
+
+<div class="table-section">
+
+
+<h2>
+Pending Assignments
+</h2>
+
+
+
+<table>
+
+
+<thead>
+
+
+<tr>
+
+<th>
+Patient
+</th>
+
+<th>
+Department
+</th>
+
+<th>
+Date
+</th>
+
+<th>
+Doctor
+</th>
+
+<th>
+Status
+</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+<tbody id="assignmentTable">
+
+
+</tbody>
+
+
+
+</table>
+
+
+
+</div>
+
+
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<script>
+
+
+
+// CHECK ADMIN LOGIN
+
+
+let currentUser =
+JSON.parse(localStorage.getItem("currentUser"));
+
+
+
+if(!currentUser || currentUser.role !== "Admin"){
+
+
+alert("Please login as administrator first.");
+
+
+window.location.href="../index.html";
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// LOAD DATA
+
+
+function loadData(){
+
+
+
+let appointments =
+JSON.parse(localStorage.getItem("appointments")) || [];
+
+
+
+let users =
+JSON.parse(localStorage.getItem("users")) || [];
+
+
+
+
+
+
+let doctors =
+users.filter(function(user){
+
+
+return user.role==="Doctor";
+
+
+});
+
+
+
+
+
+let appointmentSelect =
+document.getElementById("appointmentSelect");
+
+
+
+appointmentSelect.innerHTML =
+"<option>Select appointment</option>";
+
+
+
+
+
+
+appointments.forEach(function(app,index){
+
+
+
+if(app.status==="Pending"){
+
+
+
+let option =
+document.createElement("option");
+
+
+option.value=index;
+
+
+option.innerHTML =
+app.patientName +
+" - " +
+app.department +
+" (" +
+app.date +
+")";
+
+
+
+appointmentSelect.appendChild(option);
+
+
+
+}
+
+
+
+});
+
+
+
+
+
+
+
+
+let doctorSelect =
+document.getElementById("doctorSelect");
+
+
+
+doctorSelect.innerHTML =
+"<option>Select doctor</option>";
+
+
+
+
+
+
+
+doctors.forEach(function(doctor,index){
+
+
+
+let option =
+document.createElement("option");
+
+
+
+option.value =
+doctor.email;
+
+
+
+option.innerHTML =
+doctor.fullName +
+" - " +
+(doctor.department || "General");
+
+
+
+doctorSelect.appendChild(option);
+
+
+
+});
+
+
+
+
+
+displayAssignments();
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// DISPLAY TABLE
+
+
+function displayAssignments(){
+
+
+
+let appointments =
+JSON.parse(localStorage.getItem("appointments")) || [];
+
+
+
+
+let table =
+document.getElementById("assignmentTable");
+
+
+
+table.innerHTML="";
+
+
+
+
+
+
+
+
+appointments.forEach(function(app){
+
+
+
+let row =
+document.createElement("tr");
+
+
+
+
+row.innerHTML = `
+
+
+<td>
+${app.patientName}
+</td>
+
+
+<td>
+${app.department}
+</td>
+
+
+<td>
+${app.date}
+</td>
+
+
+<td>
+${app.doctor || "Not Assigned"}
+</td>
+
+
+<td>
+${app.status}
+</td>
+
+
+`;
+
+
+
+table.appendChild(row);
+
+
+
+});
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// ASSIGN DOCTOR
+
+
+document.getElementById("assignForm")
+.addEventListener("submit",function(event){
+
+
+
+event.preventDefault();
+
+
+
+
+
+let appointments =
+JSON.parse(localStorage.getItem("appointments")) || [];
+
+
+
+
+
+let users =
+JSON.parse(localStorage.getItem("users")) || [];
+
+
+
+
+
+
+
+let appointmentIndex =
+document.getElementById("appointmentSelect").value;
+
+
+
+
+
+let doctorEmail =
+document.getElementById("doctorSelect").value;
+
+
+
+
+
+
+
+if(appointmentIndex==="Select appointment"){
+
+
+alert("Select an appointment first.");
+
+return;
+
+
+}
+
+
+
+
+
+
+let doctor =
+users.find(function(user){
+
+
+return user.email===doctorEmail;
+
+
+});
+
+
+
+
+
+
+
+
+appointments[appointmentIndex].doctor =
+doctor.fullName;
+
+
+
+appointments[appointmentIndex].doctorEmail =
+doctor.email;
+
+
+
+appointments[appointmentIndex].status =
+"Assigned";
+
+
+
+
+
+
+
+localStorage.setItem(
+"appointments",
+JSON.stringify(appointments)
+);
+
+
+
+
+
+
+alert(
+"Doctor assigned successfully."
+);
+
+
+
+
+
+
+document.getElementById("assignForm").reset();
+
+
+
+
+loadData();
+
+
+
+});
+
+
+
+
+
+
+
+
+
+loadData();
+
+
+
+
+
+
+
+
+
+// LOGOUT
+
+
+document.getElementById("logout")
+.addEventListener("click",function(){
+
+
+localStorage.removeItem("currentUser");
+
+
+});
+
+
+
+</script>
+
 
 </body>
 
-</html>
+</html>s

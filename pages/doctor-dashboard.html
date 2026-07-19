@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -10,214 +9,504 @@
 
 </head>
 
+
 <body>
 
-    <div class="dashboard">
 
-        <!-- SIDEBAR -->
+<div class="dashboard">
 
-        <div class="sidebar">
 
-            <h1>eHealth Hub</h1>
+    <!-- SIDEBAR -->
 
-            <ul>
+    <div class="sidebar">
 
-                <li><a href="doctor-dashboard.html">Dashboard</a></li>
 
-                <li><a href="doctor-appointments.html">My Appointments</a></li>
+        <h1>eHealth Hub</h1>
 
-                <li><a href="patient-reports.html">Patient Reports</a></li>
 
-                <li><a href="availability.html">Availability</a></li>
+        <ul>
 
-                <li><a href="index.html">Logout</a></li>
+            <li>
+                <a href="doctor-dashboard.html">
+                    Dashboard
+                </a>
+            </li>
 
-            </ul>
 
-        </div>
+            <li>
+                <a href="doctor-appointments.html">
+                    My Appointments
+                </a>
+            </li>
 
-        <!-- CONTENT -->
 
-        <div class="content">
+            <li>
+                <a href="patient-reports.html">
+                    Patient Reports
+                </a>
+            </li>
 
-            <div class="top">
 
-                <h1>Doctor Dashboard</h1>
+            <li>
+                <a href="availability.html">
+                    Availability
+                </a>
+            </li>
 
-                <p>
-                    Manage appointments, patients and healthcare reports.
-                </p>
 
-            </div>
+            <li>
+                <a href="../index.html" id="logout">
+                    Logout
+                </a>
+            </li>
 
-            <!-- CARDS -->
 
-            <div class="cards">
+        </ul>
 
-                <div class="card">
-
-                    <h2>Today's Appointments</h2>
-
-                    <p>5 Scheduled Consultations</p>
-
-                    <a href="doctor-appointments.html">
-
-                        <button>View Appointments</button>
-
-                    </a>
-
-                </div>
-
-                <div class="card">
-
-                    <h2>Pending Reports</h2>
-
-                    <p>3 Medical Reports Remaining</p>
-
-                    <a href="patient-reports.html">
-
-                        <button>Write Reports</button>
-
-                    </a>
-
-                </div>
-
-                <div class="card">
-
-                    <h2>Availability</h2>
-
-                    <p>Update your weekly schedule.</p>
-
-                    <a href="availability.html">
-
-                        <button>Update Schedule</button>
-
-                    </a>
-
-                </div>
-
-            </div>
-
-            <!-- PROFILE -->
-
-            <div class="profile-box">
-
-                <h2>Doctor Information</h2>
-
-                <p><strong>Name:</strong> Dr. Sarah Johnson</p>
-
-                <p><strong>Department:</strong> Cardiology</p>
-
-                <p><strong>Email:</strong> sarahdoctor@gmail.com</p>
-
-                <p><strong>Experience:</strong> 8 Years</p>
-
-                <p><strong>Status:</strong> Active</p>
-
-            </div>
-
-            <!-- TABLE -->
-
-            <div class="table-section">
-
-                <h2>Recent Appointments</h2>
-
-                <table>
-
-                    <tr>
-
-                        <th>Patient</th>
-                        <th>Date</th>
-                        <th>Problem</th>
-                        <th>Status</th>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>John Doe</td>
-                        <td>28 May 2026</td>
-                        <td>Headache</td>
-                        <td>Assigned</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>Mary Jane</td>
-                        <td>29 May 2026</td>
-                        <td>Fever</td>
-                        <td>Completed</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>Peter Smith</td>
-                        <td>30 May 2026</td>
-                        <td>General Checkup</td>
-                        <td>Pending</td>
-
-                    </tr>
-
-                </table>
-
-            </div>
-
-            <!-- TIPS -->
-
-            <div class="tips">
-
-                <div class="tip-box">
-
-                    <img src="../media/firstdoctor-dashboard.avif">
-
-                    <h3>Patient Care</h3>
-
-                    <p>
-                        Provide quality healthcare services
-                        and proper patient treatment.
-                    </p>
-
-                </div>
-
-                <div class="tip-box">
-
-                    <img src="../media/seconddoctor-dashboard.avif">
-
-                    <h3>Medical Reports</h3>
-
-                    <p>
-                        Keep accurate healthcare reports
-                        for better patient management.
-                    </p>
-
-                </div>
-
-                <div class="tip-box">
-
-                    <img src="../media/thirddoctor-dashboard.avif">
-
-                    <h3>Healthcare Services</h3>
-
-                    <p>
-                        Improve healthcare delivery through
-                        digital hospital management.
-                    </p>
-
-                </div>
-
-            </div>
-
-            <div class="footer">
-
-                <p>eHealth Hub Doctor Portal 2026</p>
-
-            </div>
-
-        </div>
 
     </div>
+
+
+
+
+
+
+
+
+    <!-- CONTENT -->
+
+
+    <div class="content">
+
+
+        <div class="top">
+
+
+            <h1>
+                Doctor Dashboard
+            </h1>
+
+
+            <p id="welcomeDoctor">
+                Welcome Doctor
+            </p>
+
+
+        </div>
+
+
+
+
+
+
+
+        <!-- DOCTOR PROFILE -->
+
+
+        <div class="profile-box">
+
+
+            <h2>
+                Doctor Information
+            </h2>
+
+
+            <p>
+                Name:
+                <strong id="doctorName">
+                    Loading...
+                </strong>
+            </p>
+
+
+            <p>
+                Email:
+                <strong id="doctorEmail">
+                    Loading...
+                </strong>
+            </p>
+
+
+            <p>
+                Department:
+                <strong>
+                    General Medicine
+                </strong>
+            </p>
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+        <!-- DASHBOARD CARDS -->
+
+
+        <div class="cards">
+
+
+            <div class="card">
+
+
+                <h2>
+                    Appointments
+                </h2>
+
+
+                <p>
+                    <span id="appointmentCount">
+                        0
+                    </span>
+                    Assigned appointments
+                </p>
+
+
+            </div>
+
+
+
+
+
+            <div class="card">
+
+
+                <h2>
+                    Reports
+                </h2>
+
+
+                <p>
+                    <span id="reportCount">
+                        0
+                    </span>
+                    Medical reports created
+                </p>
+
+
+            </div>
+
+
+
+
+
+            <div class="card">
+
+
+                <h2>
+                    Availability
+                </h2>
+
+
+                <p>
+                    Doctor availability management.
+                </p>
+
+
+                <a href="availability.html">
+                    Update Status
+                </a>
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+        <!-- APPOINTMENTS -->
+
+
+        <div class="table-section">
+
+
+            <h2>
+                Recent Appointments
+            </h2>
+
+
+
+            <table>
+
+
+                <thead>
+
+
+                    <tr>
+
+
+                        <th>
+                            Patient
+                        </th>
+
+
+                        <th>
+                            Date
+                        </th>
+
+
+                        <th>
+                            Status
+                        </th>
+
+
+                    </tr>
+
+
+                </thead>
+
+
+
+                <tbody id="appointmentTable">
+
+
+                </tbody>
+
+
+            </table>
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+        <!-- FOOTER -->
+
+
+        <div class="footer">
+
+            eHealth Hub Doctor Portal
+
+        </div>
+
+
+
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<script>
+
+
+
+// GET CURRENT USER
+
+
+let currentUser =
+JSON.parse(localStorage.getItem("currentUser"));
+
+
+
+
+
+
+// CHECK LOGIN
+
+
+if(!currentUser || currentUser.role !== "Doctor"){
+
+
+    alert("Please login as a doctor first.");
+
+
+    window.location.href="../index.html";
+
+
+}
+
+else{
+
+
+
+document.getElementById("welcomeDoctor").innerHTML =
+"Welcome Dr. " + currentUser.fullName;
+
+
+
+document.getElementById("doctorName").innerHTML =
+currentUser.fullName;
+
+
+
+document.getElementById("doctorEmail").innerHTML =
+currentUser.email;
+
+
+
+}
+
+
+
+
+
+
+
+// LOAD APPOINTMENTS
+
+
+function loadAppointments(){
+
+
+let appointments =
+JSON.parse(localStorage.getItem("appointments")) || [];
+
+
+
+let table =
+document.getElementById("appointmentTable");
+
+
+
+table.innerHTML="";
+
+
+
+document.getElementById("appointmentCount").innerHTML =
+appointments.length;
+
+
+
+
+appointments.forEach(function(appointment){
+
+
+
+let row =
+document.createElement("tr");
+
+
+
+row.innerHTML = `
+
+
+<td>
+${appointment.patientName}
+</td>
+
+
+<td>
+${appointment.date}
+</td>
+
+
+<td>
+${appointment.status}
+</td>
+
+
+`;
+
+
+
+table.appendChild(row);
+
+
+
+});
+
+
+
+}
+
+
+
+
+
+
+// LOAD REPORT COUNT
+
+
+function loadReports(){
+
+
+
+let reports =
+JSON.parse(localStorage.getItem("reports")) || [];
+
+
+
+let doctorReports =
+reports.filter(function(report){
+
+
+return report.doctor === currentUser.fullName;
+
+
+});
+
+
+
+document.getElementById("reportCount").innerHTML =
+doctorReports.length;
+
+
+
+}
+
+
+
+
+
+
+loadAppointments();
+
+loadReports();
+
+
+
+
+
+
+
+
+
+// LOGOUT
+
+
+document.getElementById("logout")
+.addEventListener("click",function(){
+
+
+localStorage.removeItem("currentUser");
+
+
+});
+
+
+
+</script>
+
+
 
 </body>
 

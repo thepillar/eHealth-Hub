@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -10,213 +9,682 @@
 
 </head>
 
+
 <body>
 
-    <div class="dashboard">
 
-        <!-- SIDEBAR -->
+<div class="dashboard">
 
-        <div class="sidebar">
 
-            <h1>eHealth Hub</h1>
+<!-- SIDEBAR -->
 
-            <ul>
 
-                <li><a href="admin-dashboard.html">Dashboard</a></li>
+<div class="sidebar">
 
-                <li><a href="manage-patients.html">Patients</a></li>
 
-                <li><a href="manage-doctors.html">Doctors</a></li>
+<h1>eHealth Hub</h1>
 
-                <li><a href="assign-doctor.html">Assign Doctors</a></li>
 
-                <li><a href="appointment-management.html">Appointments</a></li>
+<ul>
 
-                <li><a href="index.html">Logout</a></li>
 
-            </ul>
+<li>
+<a href="admin-dashboard.html">
+Dashboard
+</a>
+</li>
 
-        </div>
 
-        <!-- CONTENT -->
+<li>
+<a href="manage-patients.html">
+Patients
+</a>
+</li>
 
-        <div class="content">
 
-            <div class="top">
+<li>
+<a href="manage-doctors.html">
+Doctors
+</a>
+</li>
 
-                <h1>Admin Dashboard</h1>
 
-                <p>
-                    Manage doctors, patients and hospital appointments.
-                </p>
+<li>
+<a href="assign-doctor.html">
+Assign Doctors
+</a>
+</li>
 
-            </div>
 
-            <!-- CARDS -->
+<li>
+<a href="appointment-management.html">
+Appointments
+</a>
+</li>
 
-            <div class="cards">
 
-                <div class="card">
+<li>
+<a href="../index.html" id="logout">
+Logout
+</a>
+</li>
 
-                    <h2>Total Patients</h2>
 
-                    <p>1,240 Registered Patients</p>
+</ul>
 
-                    <a href="manage-patients.html">
 
-                        <button>View Patients</button>
+</div>
 
-                    </a>
 
-                </div>
 
-                <div class="card">
 
-                    <h2>Total Doctors</h2>
 
-                    <p>58 Active Doctors</p>
 
-                    <a href="manage-doctors.html">
 
-                        <button>View Doctors</button>
 
-                    </a>
+<!-- CONTENT -->
 
-                </div>
 
-                <div class="card">
+<div class="content">
 
-                    <h2>Appointments</h2>
 
-                    <p>320 Pending Appointments</p>
 
-                    <a href="appointment-management.html">
+<div class="top">
 
-                        <button>Manage Appointments</button>
 
-                    </a>
+<h1>
+Admin Dashboard
+</h1>
 
-                </div>
 
-            </div>
+<p>
+Manage doctors, patients and hospital appointments.
+</p>
 
-            <!-- PROFILE -->
 
-            <div class="profile-box">
+</div>
 
-                <h2>System Information</h2>
 
-                <p><strong>Hospital Name:</strong> Kigali Healthcare Center</p>
 
-                <p><strong>System Version:</strong> eHealth Hub v2.0</p>
 
-                <p><strong>Departments:</strong> 15</p>
 
-                <p><strong>Active Staff:</strong> 180</p>
 
-                <p><strong>Emergency Services:</strong> Available</p>
 
-            </div>
 
-            <!-- TABLE -->
 
-            <div class="table-section">
+<!-- CARDS -->
 
-                <h2>Recent Appointments</h2>
 
-                <table>
+<div class="cards">
 
-                    <tr>
 
-                        <th>Patient</th>
-                        <th>Doctor</th>
-                        <th>Date</th>
-                        <th>Status</th>
+<div class="card">
 
-                    </tr>
 
-                    <tr>
+<h2>
+Total Patients
+</h2>
 
-                        <td>John Doe</td>
-                        <td>Dr. Sarah</td>
-                        <td>28 May 2026</td>
-                        <td>Confirmed</td>
 
-                    </tr>
+<p>
+<span id="patientCount">
+0
+</span>
+Registered Patients
+</p>
 
-                    <tr>
 
-                        <td>Mary Jane</td>
-                        <td>Not Assigned</td>
-                        <td>29 May 2026</td>
-                        <td>Pending</td>
+<a href="manage-patients.html">
 
-                    </tr>
+<button>
+View Patients
+</button>
 
-                    <tr>
+</a>
 
-                        <td>Peter Smith</td>
-                        <td>Dr. James</td>
-                        <td>30 May 2026</td>
-                        <td>Completed</td>
 
-                    </tr>
+</div>
 
-                </table>
 
-            </div>
 
-            <!-- MANAGEMENT -->
 
-            <div class="tips">
 
-                <div class="tip-box">
 
-                    <img src="../media/firstadmin.avif">
 
-                    <h3>Patient Management</h3>
 
-                    <p>
-                        Manage healthcare records and patient information.
-                    </p>
+<div class="card">
 
-                </div>
 
-                <div class="tip-box">
+<h2>
+Total Doctors
+</h2>
 
-                    <img src="../media/secondadmin.avif">
 
-                    <h3>Doctor Management</h3>
+<p>
+<span id="doctorCount">
+0
+</span>
+Active Doctors
+</p>
 
-                    <p>
-                        Assign doctors and manage healthcare schedules.
-                    </p>
 
-                </div>
+<a href="manage-doctors.html">
 
-                <div class="tip-box">
+<button>
+View Doctors
+</button>
 
-                    <img src="../media/thirdadmin.avif">
+</a>
 
-                    <h3>Hospital Operations</h3>
 
-                    <p>
-                        Improve healthcare efficiency using digital systems.
-                    </p>
+</div>
 
-                </div>
 
-            </div>
 
-            <div class="footer">
 
-                <p>eHealth Hub Administration Portal 2026</p>
 
-            </div>
 
-        </div>
 
-    </div>
+
+<div class="card">
+
+
+<h2>
+Appointments
+</h2>
+
+
+<p>
+<span id="appointmentCount">
+0
+</span>
+Pending Appointments
+</p>
+
+
+<a href="appointment-management.html">
+
+<button>
+Manage Appointments
+</button>
+
+</a>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- SYSTEM INFORMATION -->
+
+
+<div class="profile-box">
+
+
+<h2>
+System Information
+</h2>
+
+
+<p>
+<strong>
+Hospital Name:
+</strong>
+Kigali Healthcare Center
+</p>
+
+
+<p>
+<strong>
+System Version:
+</strong>
+eHealth Hub v2.0
+</p>
+
+
+<p>
+<strong>
+Departments:
+</strong>
+15
+</p>
+
+
+<p>
+<strong>
+Active Staff:
+</strong>
+180
+</p>
+
+
+<p>
+<strong>
+Emergency Services:
+</strong>
+Available
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- APPOINTMENT TABLE -->
+
+
+<div class="table-section">
+
+
+<h2>
+Recent Appointments
+</h2>
+
+
+
+<table>
+
+
+<thead>
+
+
+<tr>
+
+<th>
+Patient
+</th>
+
+
+<th>
+Department
+</th>
+
+
+<th>
+Date
+</th>
+
+
+<th>
+Status
+</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+<tbody id="appointmentTable">
+
+
+</tbody>
+
+
+</table>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- MANAGEMENT -->
+
+
+<div class="tips">
+
+
+<div class="tip-box">
+
+
+<img src="../media/firstadmin.avif">
+
+
+<h3>
+Patient Management
+</h3>
+
+
+<p>
+Manage healthcare records and patient information.
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="tip-box">
+
+
+<img src="../media/secondadmin.avif">
+
+
+<h3>
+Doctor Management
+</h3>
+
+
+<p>
+Assign doctors and manage healthcare schedules.
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="tip-box">
+
+
+<img src="../media/thirdadmin.avif">
+
+
+<h3>
+Hospital Operations
+</h3>
+
+
+<p>
+Improve healthcare efficiency using digital systems.
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="footer">
+
+
+<p>
+eHealth Hub Administration Portal 2026
+</p>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<script>
+
+
+
+// GET CURRENT USER
+
+
+let currentUser =
+JSON.parse(localStorage.getItem("currentUser"));
+
+
+
+
+
+
+
+// CHECK ADMIN LOGIN
+
+
+if(!currentUser || currentUser.role !== "Admin"){
+
+
+alert("Please login as an administrator first.");
+
+
+window.location.href="../index.html";
+
+
+}
+
+
+
+
+
+
+
+
+
+// LOAD STATISTICS
+
+
+function loadStatistics(){
+
+
+
+let users =
+JSON.parse(localStorage.getItem("users")) || [];
+
+
+
+let patients =
+users.filter(function(user){
+
+
+return user.role === "Patient";
+
+
+});
+
+
+
+let doctors =
+users.filter(function(user){
+
+
+return user.role === "Doctor";
+
+
+});
+
+
+
+
+
+let appointments =
+JSON.parse(localStorage.getItem("appointments")) || [];
+
+
+
+
+
+let pendingAppointments =
+appointments.filter(function(appointment){
+
+
+return appointment.status === "Pending";
+
+
+});
+
+
+
+
+
+
+document.getElementById("patientCount").innerHTML =
+patients.length;
+
+
+
+
+document.getElementById("doctorCount").innerHTML =
+doctors.length;
+
+
+
+
+document.getElementById("appointmentCount").innerHTML =
+pendingAppointments.length;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// LOAD APPOINTMENTS TABLE
+
+
+
+function loadAppointments(){
+
+
+
+let appointments =
+JSON.parse(localStorage.getItem("appointments")) || [];
+
+
+
+let table =
+document.getElementById("appointmentTable");
+
+
+
+table.innerHTML="";
+
+
+
+
+
+
+appointments.forEach(function(appointment){
+
+
+
+let row =
+document.createElement("tr");
+
+
+
+row.innerHTML = `
+
+
+<td>
+${appointment.patientName}
+</td>
+
+
+<td>
+${appointment.department}
+</td>
+
+
+<td>
+${appointment.date}
+</td>
+
+
+<td>
+${appointment.status}
+</td>
+
+
+`;
+
+
+
+table.appendChild(row);
+
+
+
+});
+
+
+
+}
+
+
+
+
+
+
+
+loadStatistics();
+
+loadAppointments();
+
+
+
+
+
+
+
+
+// LOGOUT
+
+
+document.getElementById("logout")
+.addEventListener("click",function(){
+
+
+localStorage.removeItem("currentUser");
+
+
+});
+
+
+
+
+</script>
+
+
 
 </body>
 

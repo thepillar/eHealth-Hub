@@ -1,182 +1,599 @@
-
 <!DOCTYPE html>
 <html>
 
 <head>
 
-    <title>Manage Patients - eHealth Hub</title>
+<title>Manage Patients - eHealth Hub</title>
 
-    <link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/style.css">
 
 </head>
 
+
 <body>
 
-    <div class="dashboard">
 
-        <!-- SIDEBAR -->
+<div class="dashboard">
 
-        <div class="sidebar">
 
-            <h1>eHealth Hub</h1>
 
-            <ul>
+<!-- SIDEBAR -->
 
-                <li><a href="admin-dashboard.html">Dashboard</a></li>
 
-                <li><a href="manage-patients.html">Patients</a></li>
+<div class="sidebar">
 
-                <li><a href="manage-doctors.html">Doctors</a></li>
 
-                <li><a href="assign-doctor.html">Assign Doctors</a></li>
+<h1>
+eHealth Hub
+</h1>
 
-                <li><a href="appointment-management.html">Appointments</a></li>
 
-                <li><a href="index.html">Logout</a></li>
+<ul>
 
-            </ul>
 
-        </div>
+<li>
+<a href="admin-dashboard.html">
+Dashboard
+</a>
+</li>
 
-        <!-- CONTENT -->
 
-        <div class="content">
+<li>
+<a href="manage-patients.html">
+Patients
+</a>
+</li>
 
-            <div class="top">
 
-                <h1>Manage Patients</h1>
+<li>
+<a href="manage-doctors.html">
+Doctors
+</a>
+</li>
 
-                <p>
-                    View and manage registered healthcare patients.
-                </p>
 
-            </div>
+<li>
+<a href="assign-doctor.html">
+Assign Doctors
+</a>
+</li>
 
-            <!-- STATS -->
 
-            <div class="cards">
+<li>
+<a href="appointment-management.html">
+Appointments
+</a>
+</li>
 
-                <div class="card">
 
-                    <h2>Total Patients</h2>
+<li>
+<a href="../index.html" id="logout">
+Logout
+</a>
+</li>
 
-                    <p>1,240 Registered Patients</p>
 
-                </div>
+</ul>
 
-                <div class="card">
 
-                    <h2>New Registrations</h2>
+</div>
 
-                    <p>32 New Patients This Week</p>
 
-                </div>
 
-                <div class="card">
 
-                    <h2>Appointments</h2>
 
-                    <p>420 Active Appointments</p>
 
-                </div>
 
-            </div>
 
-            <!-- TABLE -->
 
-            <div class="table-section">
+<!-- CONTENT -->
 
-                <h2>Patient Records</h2>
 
-                <table>
+<div class="content">
 
-                    <tr>
 
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Department</th>
-                        <th>Status</th>
 
-                    </tr>
+<div class="top">
 
-                    <tr>
 
-                        <td>John Doe</td>
-                        <td>johndoe@gmail.com</td>
-                        <td>General Medicine</td>
-                        <td>Active</td>
+<h1>
+Manage Patients
+</h1>
 
-                    </tr>
 
-                    <tr>
+<p>
+View and manage registered healthcare patients.
+</p>
 
-                        <td>Mary Jane</td>
-                        <td>mary@gmail.com</td>
-                        <td>Dental</td>
-                        <td>Active</td>
 
-                    </tr>
+</div>
 
-                    <tr>
 
-                        <td>Peter Smith</td>
-                        <td>peter@gmail.com</td>
-                        <td>Cardiology</td>
-                        <td>Pending</td>
 
-                    </tr>
 
-                </table>
 
-            </div>
 
-            <!-- PATIENT SERVICES -->
 
-            <div class="tips">
 
-                <div class="tip-box">
 
-                    <img src="../media/firstadmin.avif">
+<!-- STATS -->
 
-                    <h3>Patient Monitoring</h3>
 
-                    <p>
-                        Monitor patient activities and healthcare services.
-                    </p>
+<div class="cards">
 
-                </div>
 
-                <div class="tip-box">
+<div class="card">
 
-                    <img src="../media/secondadmin.avif">
 
-                    <h3>Digital Records</h3>
+<h2>
+Total Patients
+</h2>
 
-                    <p>
-                        Securely store patient healthcare information online.
-                    </p>
 
-                </div>
+<p>
 
-                <div class="tip-box">
+<span id="totalPatients">
+0
+</span>
 
-                    <img src="../media/thirdadmin.avif">
+Registered Patients
 
-                    <h3>Healthcare Access</h3>
+</p>
 
-                    <p>
-                        Improve healthcare access using digital systems.
-                    </p>
 
-                </div>
+</div>
 
-            </div>
 
-        </div>
 
-    </div>
+
+
+<div class="card">
+
+
+<h2>
+New Registrations
+</h2>
+
+
+<p>
+
+<span id="newPatients">
+0
+</span>
+
+New Patients
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+
+<h2>
+Appointments
+</h2>
+
+
+<p>
+
+<span id="appointmentCount">
+0
+</span>
+
+Active Appointments
+
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- TABLE -->
+
+
+<div class="table-section">
+
+
+<h2>
+Patient Records
+</h2>
+
+
+
+
+<table>
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+Name
+</th>
+
+
+<th>
+Email
+</th>
+
+
+<th>
+Phone
+</th>
+
+
+<th>
+Date Of Birth
+</th>
+
+
+<th>
+Gender
+</th>
+
+
+<th>
+Status
+</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+<tbody id="patientTable">
+
+
+</tbody>
+
+
+
+</table>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- SERVICES -->
+
+
+<div class="tips">
+
+
+<div class="tip-box">
+
+
+<img src="../media/firstadmin.avif">
+
+
+<h3>
+Patient Monitoring
+</h3>
+
+
+<p>
+Monitor patient activities and healthcare services.
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="tip-box">
+
+
+<img src="../media/secondadmin.avif">
+
+
+<h3>
+Digital Records
+</h3>
+
+
+<p>
+Securely store patient healthcare information online.
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="tip-box">
+
+
+<img src="../media/thirdadmin.avif">
+
+
+<h3>
+Healthcare Access
+</h3>
+
+
+<p>
+Improve healthcare access using digital systems.
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<script>
+
+
+
+// CURRENT USER
+
+
+let currentUser =
+JSON.parse(localStorage.getItem("currentUser"));
+
+
+
+
+
+
+
+// CHECK ADMIN
+
+
+if(!currentUser || currentUser.role !== "Admin"){
+
+
+alert("Please login as administrator first.");
+
+
+window.location.href="../index.html";
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// LOAD PATIENTS
+
+
+function loadPatients(){
+
+
+
+let users =
+JSON.parse(localStorage.getItem("users")) || [];
+
+
+
+
+
+// only patients
+
+
+let patients =
+users.filter(function(user){
+
+
+
+return user.role === "Patient";
+
+
+});
+
+
+
+
+
+
+
+
+let table =
+document.getElementById("patientTable");
+
+
+
+table.innerHTML="";
+
+
+
+
+
+
+
+patients.forEach(function(patient){
+
+
+
+let row =
+document.createElement("tr");
+
+
+
+
+
+row.innerHTML = `
+
+
+<td>
+${patient.fullName}
+</td>
+
+
+<td>
+${patient.email}
+</td>
+
+
+<td>
+${patient.phone}
+</td>
+
+
+<td>
+${patient.dob}
+</td>
+
+
+<td>
+${patient.gender}
+</td>
+
+
+<td>
+Active
+</td>
+
+
+
+`;
+
+
+
+
+table.appendChild(row);
+
+
+
+});
+
+
+
+
+
+
+
+
+document.getElementById("totalPatients").innerHTML =
+patients.length;
+
+
+
+
+
+// newest registrations
+
+
+document.getElementById("newPatients").innerHTML =
+patients.length;
+
+
+
+
+
+
+
+
+// appointment count
+
+
+let appointments =
+JSON.parse(localStorage.getItem("appointments")) || [];
+
+
+
+document.getElementById("appointmentCount").innerHTML =
+appointments.length;
+
+
+
+}
+
+
+
+
+
+
+
+
+loadPatients();
+
+
+
+
+
+
+
+
+
+// LOGOUT
+
+
+document.getElementById("logout")
+.addEventListener("click",function(){
+
+
+localStorage.removeItem("currentUser");
+
+
+});
+
+
+
+</script>
+
+
 
 </body>
 
 </html>
-

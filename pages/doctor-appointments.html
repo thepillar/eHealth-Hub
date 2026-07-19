@@ -1,130 +1,519 @@
-
 <!DOCTYPE html>
 <html>
 
 <head>
 
-    <title>Doctor Appointments - eHealth Hub</title>
+<title>Doctor Appointments - eHealth Hub</title>
 
-    <link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/style.css">
 
 </head>
 
+
 <body>
 
-    <div class="dashboard">
 
-        <div class="sidebar">
+<div class="dashboard">
 
-            <h1>eHealth Hub</h1>
 
-            <ul>
+<!-- SIDEBAR -->
 
-                <li><a href="doctor-dashboard.html">Dashboard</a></li>
 
-                <li><a href="doctor-appointments.html">My Appointments</a></li>
+<div class="sidebar">
 
-                <li><a href="patient-reports.html">Patient Reports</a></li>
 
-                <li><a href="availability.html">Availability</a></li>
+<h1>
+eHealth Hub
+</h1>
 
-                <li><a href="index.html">Logout</a></li>
 
-            </ul>
+<ul>
 
-        </div>
 
-        <div class="content">
+<li>
+<a href="doctor-dashboard.html">
+Dashboard
+</a>
+</li>
 
-            <div class="top">
 
-                <h1>Doctor Appointments</h1>
+<li>
+<a href="doctor-appointments.html">
+My Appointments
+</a>
+</li>
 
-                <p>
-                    View assigned appointments and patient healthcare information.
-                </p>
 
-            </div>
+<li>
+<a href="patient-reports.html">
+Patient Reports
+</a>
+</li>
 
-            <div class="table-section">
 
-                <h2>Assigned Patients</h2>
+<li>
+<a href="availability.html">
+Availability
+</a>
+</li>
 
-                <table>
 
-                    <tr>
+<li>
+<a href="../index.html" id="logout">
+Logout
+</a>
+</li>
 
-                        <th>Patient</th>
-                        <th>Date</th>
-                        <th>Department</th>
-                        <th>Status</th>
 
-                    </tr>
+</ul>
 
-                    <tr>
 
-                        <td>John Doe</td>
-                        <td>28 May 2026</td>
-                        <td>Cardiology</td>
-                        <td>Assigned</td>
+</div>
 
-                    </tr>
 
-                    <tr>
 
-                        <td>Mary Jane</td>
-                        <td>29 May 2026</td>
-                        <td>Dental</td>
-                        <td>Completed</td>
 
-                    </tr>
 
-                    <tr>
 
-                        <td>Peter Smith</td>
-                        <td>30 May 2026</td>
-                        <td>General Medicine</td>
-                        <td>Pending</td>
 
-                    </tr>
 
-                </table>
 
-            </div>
+<!-- CONTENT -->
 
-            <div class="cards">
 
-                <div class="card">
+<div class="content">
 
-                    <h2>Morning Shift</h2>
 
-                    <p>8:00 AM - 12:00 PM</p>
 
-                </div>
+<div class="top">
 
-                <div class="card">
 
-                    <h2>Evening Shift</h2>
+<h1>
+Doctor Appointments
+</h1>
 
-                    <p>2:00 PM - 6:00 PM</p>
 
-                </div>
+<p>
+View assigned appointments and patient healthcare information.
+</p>
 
-                <div class="card">
 
-                    <h2>Emergency Calls</h2>
+</div>
 
-                    <p>3 Emergency Cases Today</p>
 
-                </div>
 
-            </div>
 
-        </div>
 
-    </div>
+
+
+
+
+<!-- TABLE -->
+
+
+<div class="table-section">
+
+
+<h2>
+Assigned Patients
+</h2>
+
+
+
+
+<table>
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+Patient
+</th>
+
+
+<th>
+Date
+</th>
+
+
+<th>
+Department
+</th>
+
+
+<th>
+Problem
+</th>
+
+
+<th>
+Status
+</th>
+
+
+<th>
+Action
+</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+<tbody id="appointmentTable">
+
+
+</tbody>
+
+
+
+</table>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- SHIFT INFORMATION -->
+
+
+<div class="cards">
+
+
+<div class="card">
+
+
+<h2>
+Morning Shift
+</h2>
+
+
+<p>
+8:00 AM - 12:00 PM
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+
+<h2>
+Evening Shift
+</h2>
+
+
+<p>
+2:00 PM - 6:00 PM
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+
+<h2>
+Emergency Calls
+</h2>
+
+
+<p>
+3 Emergency Cases Today
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<script>
+
+
+
+// CHECK DOCTOR LOGIN
+
+
+let currentUser =
+JSON.parse(localStorage.getItem("currentUser"));
+
+
+
+
+if(!currentUser || currentUser.role !== "Doctor"){
+
+
+alert("Please login as doctor first.");
+
+
+window.location.href="../index.html";
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// LOAD APPOINTMENTS
+
+
+function loadAppointments(){
+
+
+
+let appointments =
+JSON.parse(localStorage.getItem("appointments")) || [];
+
+
+
+
+
+let myAppointments =
+appointments.filter(function(app){
+
+
+
+return app.doctorEmail === currentUser.email;
+
+
+
+});
+
+
+
+
+
+
+
+let table =
+document.getElementById("appointmentTable");
+
+
+
+table.innerHTML="";
+
+
+
+
+
+
+
+
+myAppointments.forEach(function(app,index){
+
+
+
+let realIndex =
+appointments.indexOf(app);
+
+
+
+
+
+
+let row =
+document.createElement("tr");
+
+
+
+
+row.innerHTML = `
+
+
+
+<td>
+${app.patientName}
+</td>
+
+
+
+<td>
+${app.date}
+</td>
+
+
+
+<td>
+${app.department}
+</td>
+
+
+
+<td>
+${app.problem}
+</td>
+
+
+
+<td>
+${app.status}
+</td>
+
+
+
+<td>
+
+
+<button onclick="updateAppointment(${realIndex},'Accepted')">
+Accept
+</button>
+
+
+<button onclick="updateAppointment(${realIndex},'Completed')">
+Complete
+</button>
+
+
+</td>
+
+
+`;
+
+
+
+table.appendChild(row);
+
+
+
+});
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// UPDATE STATUS
+
+
+function updateAppointment(index,status){
+
+
+
+let appointments =
+JSON.parse(localStorage.getItem("appointments")) || [];
+
+
+
+
+appointments[index].status=status;
+
+
+
+
+
+localStorage.setItem(
+"appointments",
+JSON.stringify(appointments)
+);
+
+
+
+
+
+
+alert(
+"Appointment updated successfully."
+);
+
+
+
+
+
+loadAppointments();
+
+
+
+}
+
+
+
+
+
+
+
+
+
+loadAppointments();
+
+
+
+
+
+
+
+
+
+// LOGOUT
+
+
+document.getElementById("logout")
+.addEventListener("click",function(){
+
+
+localStorage.removeItem("currentUser");
+
+
+});
+
+
+
+</script>
+
 
 </body>
 
 </html>
-

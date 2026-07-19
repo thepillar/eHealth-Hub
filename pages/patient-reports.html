@@ -9,65 +9,475 @@
 
 </head>
 
+
 <body>
 
-    <div class="dashboard">
 
-        <div class="sidebar">
+<div class="dashboard">
 
-            <h1>eHealth Hub</h1>
 
-            <ul>
+    <!-- SIDEBAR -->
 
-                <li><a href="doctor-dashboard.html">Dashboard</a></li>
+    <div class="sidebar">
 
-                <li><a href="doctor-appointments.html">My Appointments</a></li>
 
-                <li><a href="patient-reports.html">Patient Reports</a></li>
+        <h1>eHealth Hub</h1>
 
-                <li><a href="availability.html">Availability</a></li>
 
-                <li><a href="index.html">Logout</a></li>
+        <ul>
 
-            </ul>
 
-        </div>
+            <li>
+                <a href="doctor-dashboard.html">
+                    Dashboard
+                </a>
+            </li>
 
-        <div class="content">
 
-            <div class="top">
+            <li>
+                <a href="doctor-appointments.html">
+                    My Appointments
+                </a>
+            </li>
 
-                <h1>Patient Reports</h1>
 
-                <p>Create and manage patient healthcare reports.</p>
+            <li>
+                <a href="patient-reports.html">
+                    Patient Reports
+                </a>
+            </li>
 
-            </div>
 
-            <div class="table-section">
+            <li>
+                <a href="availability.html">
+                    Availability
+                </a>
+            </li>
 
-                <h2>Medical Report Form</h2>
 
-                <form>
+            <li>
+                <a href="../index.html" id="logout">
+                    Logout
+                </a>
+            </li>
 
-                    <label>Patient Name</label>
-                    <input type="text" placeholder="Enter patient name">
 
-                    <label>Diagnosis</label>
-                    <textarea rows="5" placeholder="Enter diagnosis"></textarea>
+        </ul>
 
-                    <label>Treatment</label>
-                    <textarea rows="5" placeholder="Enter treatment"></textarea>
-
-                    <button type="submit">Save Report</button>
-
-                </form>
-
-            </div>
-
-        </div>
 
     </div>
 
+
+
+
+
+    <!-- CONTENT -->
+
+
+    <div class="content">
+
+
+        <div class="top">
+
+
+            <h1>
+                Patient Reports
+            </h1>
+
+
+            <p>
+                Create and manage patient healthcare reports.
+            </p>
+
+
+        </div>
+
+
+
+
+
+
+        <!-- DOCTOR INFORMATION -->
+
+
+        <div class="profile-box">
+
+
+            <h2>
+                Doctor Information
+            </h2>
+
+
+            <p>
+                Doctor Name:
+                <strong id="doctorName">
+                    Loading...
+                </strong>
+            </p>
+
+
+            <p>
+                Email:
+                <strong id="doctorEmail">
+                    Loading...
+                </strong>
+            </p>
+
+
+        </div>
+
+
+
+
+
+
+        <!-- REPORT FORM -->
+
+
+        <div class="table-section">
+
+
+            <h2>
+                Medical Report Form
+            </h2>
+
+
+
+            <form id="reportForm">
+
+
+                <label>
+                    Patient Name
+                </label>
+
+
+                <input 
+                type="text"
+                id="patientName"
+                placeholder="Enter patient name"
+                required>
+
+
+
+
+
+                <label>
+                    Diagnosis
+                </label>
+
+
+                <textarea
+                id="diagnosis"
+                rows="5"
+                placeholder="Enter diagnosis"
+                required></textarea>
+
+
+
+
+
+
+                <label>
+                    Treatment
+                </label>
+
+
+                <textarea
+                id="treatment"
+                rows="5"
+                placeholder="Enter treatment"
+                required></textarea>
+
+
+
+
+
+                <button type="submit">
+                    Save Report
+                </button>
+
+
+
+            </form>
+
+
+        </div>
+
+
+
+
+
+
+        <!-- REPORT LIST -->
+
+
+        <div class="table-section">
+
+
+            <h2>
+                Submitted Reports
+            </h2>
+
+
+
+            <table>
+
+
+                <thead>
+
+
+                    <tr>
+
+                        <th>
+                            Patient
+                        </th>
+
+
+                        <th>
+                            Diagnosis
+                        </th>
+
+
+                        <th>
+                            Treatment
+                        </th>
+
+
+                        <th>
+                            Date
+                        </th>
+
+
+                    </tr>
+
+
+                </thead>
+
+
+
+
+                <tbody id="reportTable">
+
+
+                </tbody>
+
+
+            </table>
+
+
+        </div>
+
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+<script>
+
+
+// CHECK LOGIN
+
+
+let currentUser =
+JSON.parse(localStorage.getItem("currentUser"));
+
+
+
+if(!currentUser || currentUser.role !== "Doctor"){
+
+
+    alert("Please login as a doctor first.");
+
+    window.location.href="../index.html";
+
+
+}
+
+else{
+
+
+document.getElementById("doctorName").innerHTML =
+currentUser.fullName;
+
+
+
+document.getElementById("doctorEmail").innerHTML =
+currentUser.email;
+
+
+}
+
+
+
+
+
+
+// SAVE REPORT
+
+
+document.getElementById("reportForm")
+.addEventListener("submit",function(event){
+
+
+event.preventDefault();
+
+
+
+let patientName =
+document.getElementById("patientName").value;
+
+
+let diagnosis =
+document.getElementById("diagnosis").value;
+
+
+let treatment =
+document.getElementById("treatment").value;
+
+
+
+let reports =
+JSON.parse(localStorage.getItem("reports")) || [];
+
+
+
+let report = {
+
+
+patientName: patientName,
+
+diagnosis: diagnosis,
+
+treatment: treatment,
+
+doctor: currentUser.fullName,
+
+date: new Date().toLocaleDateString()
+
+
+};
+
+
+
+reports.push(report);
+
+
+
+localStorage.setItem(
+"reports",
+JSON.stringify(reports)
+);
+
+
+
+alert("Patient report saved successfully.");
+
+
+
+document.getElementById("reportForm").reset();
+
+
+
+displayReports();
+
+
+});
+
+
+
+
+
+
+
+// DISPLAY REPORTS
+
+
+function displayReports(){
+
+
+let reports =
+JSON.parse(localStorage.getItem("reports")) || [];
+
+
+
+let table =
+document.getElementById("reportTable");
+
+
+
+table.innerHTML="";
+
+
+
+reports.forEach(function(report){
+
+
+let row=document.createElement("tr");
+
+
+
+row.innerHTML=`
+
+<td>${report.patientName}</td>
+
+<td>${report.diagnosis}</td>
+
+<td>${report.treatment}</td>
+
+<td>${report.date}</td>
+
+`;
+
+
+
+table.appendChild(row);
+
+
+
+});
+
+
+}
+
+
+
+
+
+displayReports();
+
+
+
+
+
+
+
+// LOGOUT
+
+
+document.getElementById("logout")
+.addEventListener("click",function(){
+
+
+localStorage.removeItem("currentUser");
+
+
+});
+
+
+
+</script>
+
+
+
+
 </body>
+
 
 </html>

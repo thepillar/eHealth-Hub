@@ -1,0 +1,483 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>eHealth Hub</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+<body>
+    
+
+    <div class="main">
+
+        <!-- LEFT SIDE -->
+
+        <div class="left">
+
+            <h1 class="logo">eHealth Hub</h1>
+
+            <div class="home-links">
+
+                <a href="pages/patient-dashboard.html">Patient Portal</a>
+
+                <a href="pages/doctor-dashboard.html">Doctor Portal</a>
+
+                <a href="pages/admin-dashboard.html">Admin Portal</a>
+
+            </div>
+
+            <div class="top">
+
+                <h1>Smart Healthcare Management Platform</h1>
+
+                <p>
+                    The eHealth Hub is a digital healthcare management system
+                    designed to improve communication between hospitals,
+                    doctors, patients and administrators. The platform
+                    helps healthcare institutions manage appointments,
+                    patient records and healthcare services efficiently.
+                </p>
+
+            </div>
+
+            <!-- PHOTOS -->
+
+            <div class="photos">
+
+                <img src="media/firstimage.avif">
+
+                <img src="media/secondindeximage.avif">
+
+                <img src="media/thirdindeximage.avif">
+
+            </div>
+
+            <!-- CARDS -->
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <h2>Healthcare Problems</h2>
+
+                    <p>Long waiting time for appointments.</p>
+
+                    <p>Poor medical records management.</p>
+
+                    <p>Slow communication between patients and hospitals.</p>
+
+                    <p>Difficulty tracking appointments.</p>
+
+                </div>
+
+                <div class="card">
+
+                    <h2>Digital Solutions</h2>
+
+                    <p>Online appointment booking system.</p>
+
+                    <p>Electronic healthcare records.</p>
+
+                    <p>Fast communication system.</p>
+
+                    <p>Real-time appointment updates.</p>
+
+                </div>
+
+                <div class="card">
+
+                    <h2>System Benefits</h2>
+
+                    <p>24/7 healthcare access.</p>
+
+                    <p>Improved healthcare management.</p>
+
+                    <p>Better patient experience.</p>
+
+                    <p>Efficient hospital operations.</p>
+
+                </div>
+
+            </div>
+
+            <!-- SERVICES -->
+
+            <div class="services">
+
+                <div class="service-box">
+
+                    <h3>Emergency Services</h3>
+
+                    <p>
+                        Access emergency healthcare information
+                        and hospital communication services quickly.
+                    </p>
+
+                </div>
+
+                <div class="service-box">
+
+                    <h3>Online Consultation</h3>
+
+                    <p>
+                        Patients can request appointments and
+                        communicate with doctors digitally.
+                    </p>
+
+                </div>
+
+                <div class="service-box">
+
+                    <h3>Medical Records</h3>
+
+                    <p>
+                        Secure storage and easy access to
+                        patient healthcare information.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE -->
+
+        <div class="right">
+
+            <div class="top">
+
+                <h1>Welcome To eHealth Hub</h1>
+
+                <p>
+                    Login or register to access digital healthcare services.
+                </p>
+
+            </div>
+
+            <!-- LOGIN -->
+      <div class="card">
+
+    <h2>User Login</h2>
+
+    <form id="loginForm">
+
+        <label for="loginEmail">Email Address</label>
+
+        <input 
+        type="email" 
+        id="loginEmail" 
+        placeholder="Enter email address"
+        required>
+
+        <label for="loginPassword">Password</label>
+
+        <input 
+        type="password" 
+        id="loginPassword" 
+        placeholder="Enter password"
+        required>
+
+        <label for="loginRole">User Role</label>
+
+        <select id="loginRole" required>
+
+            <option value="Patient">Patient</option>
+
+            <option value="Doctor">Doctor</option>
+
+            <option value="Admin">Admin</option>
+
+        </select>
+
+        <button type="submit" id="loginBtn">
+            Login
+        </button>
+
+    </form>
+
+</div>
+           
+
+    <div class="card">
+
+    <h2>Patient Registration</h2>
+
+    <form id="registerForm">
+
+        <label for="fullName">Full Name</label>
+
+        <input 
+        type="text" 
+        id="fullName" 
+        placeholder="Enter full name"
+        required>
+
+
+        <label for="registerEmail">Email Address</label>
+
+        <input 
+        type="email" 
+        id="registerEmail" 
+        placeholder="Enter email"
+        required>
+
+
+        <label for="phoneNumber">Phone Number</label>
+
+        <input 
+        type="text" 
+        id="phoneNumber" 
+        placeholder="Enter phone number"
+        required>
+
+
+        <label for="dateOfBirth">Date Of Birth</label>
+
+        <input 
+        type="date" 
+        id="dateOfBirth"
+        required>
+
+
+        <label for="gender">Gender</label>
+
+        <select id="gender" required>
+
+            <option value="Male">Male</option>
+
+            <option value="Female">Female</option>
+
+        </select>
+
+
+        <label for="registerPassword">Password</label>
+
+        <input 
+        type="password" 
+        id="registerPassword" 
+        placeholder="Create password"
+        required>
+
+
+        <button type="submit" id="registerBtn">
+            Register
+        </button>
+
+    </form>
+
+</div>
+            <!-- INFORMATION -->
+
+            <div class="info-box">
+
+                <h3>Healthcare Statistics</h3>
+
+                <p>1,240 Registered Patients</p>
+
+                <p>58 Active Doctors</p>
+
+                <p>320 Monthly Appointments</p>
+
+                <p>15 Healthcare Departments</p>
+
+            </div>
+
+            <div class="info-box">
+
+                <h3>Emergency Contacts</h3>
+
+                <p>Emergency Line: +250 788 000 000</p>
+
+                <p>Ambulance Service: +250 788 111 111</p>
+
+                <p>Email: support@ehealthhub.com</p>
+
+            </div>
+
+        </div>
+
+    </div>
+      <script>
+
+// Create default admin account (runs only once)
+
+let users = JSON.parse(localStorage.getItem("users")) || [];
+
+let adminExists = users.some(function(user){
+    return user.role === "Admin";
+});
+
+if(!adminExists){
+
+    users.push({
+        fullName: "System Administrator",
+        email: "admin@ehealth.com",
+        phone: "",
+        dob: "",
+        gender: "",
+        password: "admin123",
+        role: "Admin"
+    });
+
+    localStorage.setItem("users", JSON.stringify(users));
+}
+
+
+// =======================
+// PATIENT REGISTRATION
+// =======================
+
+document.getElementById("registerForm").addEventListener("submit", function(event){
+
+    event.preventDefault();
+
+    let fullName = document.getElementById("fullName").value.trim();
+    let email = document.getElementById("registerEmail").value.trim();
+    let phone = document.getElementById("phoneNumber").value.trim();
+    let dob = document.getElementById("dateOfBirth").value;
+    let gender = document.getElementById("gender").value;
+    let password = document.getElementById("registerPassword").value;
+
+    if(fullName==="" || email==="" || phone==="" || dob==="" || password===""){
+
+        alert("Please fill in all fields.");
+        return;
+
+    }
+
+    let emailPattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if(!emailPattern.test(email)){
+
+        alert("Enter a valid email address.");
+        return;
+
+    }
+
+    if(!/^[0-9]+$/.test(phone)){
+
+        alert("Phone number must contain numbers only.");
+        return;
+
+    }
+
+    if(password.length<6){
+
+        alert("Password must be at least 6 characters.");
+        return;
+
+    }
+
+    let users=JSON.parse(localStorage.getItem("users")) || [];
+
+    let accountExists=users.some(function(user){
+
+        return user.email===email;
+
+    });
+
+    if(accountExists){
+
+        alert("This email is already registered.");
+        return;
+
+    }
+
+    users.push({
+
+        fullName:fullName,
+        email:email,
+        phone:phone,
+        dob:dob,
+        gender:gender,
+        password:password,
+        role:"Patient"
+
+    });
+
+    localStorage.setItem("users",JSON.stringify(users));
+
+    alert("Registration completed successfully.");
+
+    document.getElementById("registerForm").reset();
+
+});
+
+
+// =======================
+// LOGIN
+// =======================
+
+document.getElementById("loginForm").addEventListener("submit",function(event){
+
+    event.preventDefault();
+
+    let email=document.getElementById("loginEmail").value.trim();
+    let password=document.getElementById("loginPassword").value;
+    let role=document.getElementById("loginRole").value;
+
+    if(email==="" || password===""){
+
+        alert("Please enter your email and password.");
+        return;
+
+    }
+
+    let users=JSON.parse(localStorage.getItem("users")) || [];
+
+    let foundUser=users.find(function(user){
+
+        return user.email===email &&
+               user.password===password &&
+               user.role===role;
+
+    });
+
+    if(foundUser){
+
+        alert("Welcome " + foundUser.fullName + "!");
+        localStorage.setItem(
+"currentUser",
+JSON.stringify(foundUser)
+);
+
+        if(role==="Patient"){
+
+            window.location.href="pages/patient-dashboard.html";
+
+        }
+
+        else if(role==="Doctor"){
+
+            window.location.href="pages/doctor-dashboard.html";
+
+        }
+
+        else if(role==="Admin"){
+
+            window.location.href="pages/admin-dashboard.html";
+
+        }
+
+    }
+
+    else{
+
+        alert("Incorrect email, password or selected role.");
+
+    }
+
+});
+
+</script>
+
+</body>
+
+</html>
